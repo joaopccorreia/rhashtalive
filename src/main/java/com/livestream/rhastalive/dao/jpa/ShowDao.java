@@ -1,6 +1,6 @@
 package com.livestream.rhastalive.dao.jpa;
 
-import com.livestream.rhastalive.model.ShowModel;
+import com.livestream.rhastalive.model.Show;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -8,22 +8,22 @@ import java.util.List;
 @Repository
 public class ShowDao {
 
-    public List<ShowModel> findAllShows() {
+    public List<Show> findAllShows() {
         return null;
     }
 
-    public ShowModel findById(Integer id) {
+    public Show findById(Integer id) {
         return null;
     }
 
-    public void addShow (ShowModel showModel) {}
+    public void addShow (Show showModel) {}
 
-    public void editShow (ShowModel showModel) {}
+    public void editShow (Show showModel) {}
 
-    public void deleteShow (ShowModel showModel) { }
+    public void deleteShow (Show showModel) { }
 
 
-    public ShowModel saveOrUpdate(ShowModel showModel) {
+    public Show saveOrUpdate(Show showModel) {
         return null;
     }
 

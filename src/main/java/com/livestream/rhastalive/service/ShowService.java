@@ -1,7 +1,7 @@
 package com.livestream.rhastalive.service;
 
 import com.livestream.rhastalive.dao.jpa.ShowDao;
-import com.livestream.rhastalive.model.ShowModel;
+import com.livestream.rhastalive.model.Show;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,19 +13,18 @@ public class ShowService {
 
     private ShowDao dao;
 
-    public List<ShowModel> findAllShows() {
+    public List<Show> findAllShows() {
 
         return dao.findAllShows();
     }
 
-    public ShowModel findById(Integer id) {
+    public Show findById(Integer id) {
 
         return dao.findById(id);
     }
 
-    @Transactional
-    public ShowModel saveOrUpdate(ShowModel showModel) {
-        return dao.saveOrUpdate(showModel);
+    public Show saveOrUpdate(Show show) {
+        return dao.saveOrUpdate(show);
     }
 
     @Transactional
