@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class GenericModel {
+public abstract class GenericModel implements Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
