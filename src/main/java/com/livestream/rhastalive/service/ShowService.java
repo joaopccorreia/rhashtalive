@@ -4,6 +4,7 @@ import com.livestream.rhastalive.dao.jpa.ShowDao;
 import com.livestream.rhastalive.model.ShowModel;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
 @Service
@@ -13,12 +14,12 @@ public class ShowService {
 
     public List<ShowModel> findAllShows() {
 
-        dao.findAllShows();
+        return dao.findAllShows();
     }
 
     public ShowModel findById(Integer id) {
 
-        dao.findById(id);
+        return dao.findById(id);
     }
 
     public void addShow (ShowModel showModel) {

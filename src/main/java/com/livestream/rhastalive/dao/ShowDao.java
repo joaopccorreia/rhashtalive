@@ -1,4 +1,4 @@
-package com.livestream.rhastalive.dao.jpa;
+package com.livestream.rhastalive.dao;
 
 import com.livestream.rhastalive.model.ShowModel;
 import org.springframework.stereotype.Repository;
@@ -9,9 +9,13 @@ import java.util.List;
 public class ShowDao {
 
     public List<ShowModel> findAllShows() {
+
+
     }
 
     public ShowModel findById(Integer id) {
+
+
     }
 
     public void addShow (ShowModel showModel) {
