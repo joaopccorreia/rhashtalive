@@ -31,4 +31,8 @@ public abstract class GenericModel implements Model {
     @Version
     @Column(name = "version")
     private Integer version;
+
+    public Integer getId() {
+        return id;
+    }
 }

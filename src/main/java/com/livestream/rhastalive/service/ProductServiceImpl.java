@@ -39,16 +39,20 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Integer add(Product product) {
-        return null;
+        return productDao.saveOrUpdate(product).getId();
     }
 
     @Override
     public Boolean remove(Product product) {
-        return null;
+
+        productDao.delete(product.getId());
+
+        return get(product.getId()) == null;
+
     }
 
     @Override
     public int edit(Product product) {
-        return 0;
+        return productDao.saveOrUpdate(product).getId();
     }
 }
