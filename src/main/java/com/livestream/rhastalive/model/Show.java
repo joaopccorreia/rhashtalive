@@ -18,4 +18,5 @@ public class Show extends GenericModel {
     private Date date;
     private Time durationime;
     private Integer capacityLimit;
+    private boolean highLight;
 }
