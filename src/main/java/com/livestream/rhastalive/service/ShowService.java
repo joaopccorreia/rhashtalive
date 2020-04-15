@@ -14,24 +14,21 @@ public class ShowService {
 
     public List<ShowModel> findAllShows() {
 
-        dao.findAllShows();
+        return dao.findAllShows();
     }
 
     public ShowModel findById(Integer id) {
 
-        dao.findById(id);
+        return dao.findById(id);
     }
 
-    public void addShow (ShowModel showModel) {
+    @Transactional
+    public ShowModel saveOrUpdate(ShowModel showModel) {
 
-        dao.addShow(showModel);
+        return dao.saveOrUpdate(showModel);
     }
 
-    public void editShow (ShowModel showModel) {
-
-        dao.editShow(showModel);
-    }
-
+    @Transactional
     public void deleteShow (ShowModel showModel) {
 
         dao.deleteShow(showModel);

@@ -3,35 +3,11 @@ package com.livestream.rhastalive.dao;
 import com.livestream.rhastalive.model.ShowModel;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public class ShowDao {
+public class ShowDao extends GenericDao<ShowModel> {
 
-    public List<ShowModel> findAllShows() {
-
-
+    public ShowDao() {
+        super(ShowModel.class);
     }
-
-    public ShowModel findById(Integer id) {
-
-
-    }
-
-    public void addShow (ShowModel showModel) {
-
-
-    }
-
-    public void editShow (ShowModel showModel) {
-
-
-    }
-
-    public void deleteShow (ShowModel showModel) {
-
-
-    }
-
-
 }
+
