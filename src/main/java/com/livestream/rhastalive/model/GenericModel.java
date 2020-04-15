@@ -1,15 +1,11 @@
 package com.livestream.rhastalive.model;
 
-<<<<<<< HEAD
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
-=======
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
->>>>>>> d3fe171f7784731b6b9f7a8f2dfed60c9cf7911d
 
 import javax.persistence.*;
 import java.sql.Timestamp;

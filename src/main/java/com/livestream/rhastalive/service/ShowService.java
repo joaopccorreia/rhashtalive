@@ -14,7 +14,7 @@ public class ShowService {
 
     public List<ShowModel> findAllShows() {
 
-        return dao.findAllShows();
+        return dao.findAll();
     }
 
     public ShowModel findById(Integer id) {
@@ -29,8 +29,8 @@ public class ShowService {
     }
 
     @Transactional
-    public void deleteShow (ShowModel showModel) {
+    public void deleteShow (Integer id) {
 
-        dao.deleteShow(showModel);
+        dao.delete(id);
     }
 }
