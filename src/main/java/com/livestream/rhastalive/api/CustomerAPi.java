@@ -22,12 +22,12 @@ public class CustomerAPi {
 
     @GetMapping
     public ModelAndView show() {
-        return new ModelAndView("views/index", "person", personDao.get(1));
+        return null;
     }
 
     @GetMapping("/list")
     public ModelAndView showAll() {
-        return new ModelAndView("views/list-person", "persons", personDao.getAll());
+        return null;
     }
 
     @GetMapping("/add")
@@ -38,7 +38,7 @@ public class CustomerAPi {
     @PostMapping("/add")
     public ModelAndView addPerson (@NonNull @ModelAttribute("person") Customer person, Model model) {
         personDao.saveOrUpdate(person);
-        return new ModelAndView("redirect:/list", "persons", personDao.getAll());
+        return null;
     }
 
 }
