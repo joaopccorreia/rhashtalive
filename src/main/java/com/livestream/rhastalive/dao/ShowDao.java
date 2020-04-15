@@ -1,13 +1,13 @@
 package com.livestream.rhastalive.dao;
 
-import com.livestream.rhastalive.model.ShowModel;
+import com.livestream.rhastalive.model.Show;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ShowDao extends GenericDao<ShowModel> {
+public class ShowDao extends GenericDao<Show> {
 
     public ShowDao() {
-        super(ShowModel.class);
+        super(Show.class);
     }
 }
 

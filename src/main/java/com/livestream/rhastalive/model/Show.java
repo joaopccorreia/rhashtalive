@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "shows")
-public class ShowModel extends GenericModel {
+public class Show extends GenericModel {
 
     private String name;
     private Date date;
