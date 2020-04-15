@@ -1,7 +1,7 @@
 package com.livestream.rhastalive.api;
 
-import com.livestream.rhastalive.dao.PersonDao;
-import com.livestream.rhastalive.model.Person;
+import com.livestream.rhastalive.dao.CustomerDao;
+import com.livestream.rhastalive.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.ui.Model;
@@ -11,12 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/")
-public class PersonApi {
+public class CustomerAPi {
 
-    private PersonDao personDao;
+    private CustomerDao personDao;
 
     @Autowired
-    public void setPersonDao(PersonDao personDao) {
+    public void setPersonDao(CustomerDao personDao) {
         this.personDao = personDao;
     }
 
@@ -32,11 +32,11 @@ public class PersonApi {
 
     @GetMapping("/add")
     public ModelAndView addPerson(Model model) {
-        return new ModelAndView("views/add", "person", new Person());
+        return new ModelAndView("views/add", "person", new Customer());
     }
 
     @PostMapping("/add")
-    public ModelAndView addPerson (@NonNull @ModelAttribute("person") Person person, Model model) {
+    public ModelAndView addPerson (@NonNull @ModelAttribute("person") Customer person, Model model) {
         personDao.saveOrUpdate(person);
         return new ModelAndView("redirect:/list", "persons", personDao.getAll());
     }
