@@ -1,0 +1,31 @@
+package com.livestream.rhastalive.dao.jpa;
+
+import com.livestream.rhastalive.model.ShowModel;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class ShowDao {
+
+    public List<ShowModel> findAllShows() {
+        return null;
+    }
+
+    public ShowModel findById(Integer id) {
+        return null;
+    }
+
+    public void addShow (ShowModel showModel) {}
+
+    public void editShow (ShowModel showModel) {}
+
+    public void deleteShow (ShowModel showModel) { }
+
+
+    public ShowModel saveOrUpdate(ShowModel showModel) {
+        return null;
+    }
+
+    public void delete(Integer id) { }
+}

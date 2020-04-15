@@ -54,7 +54,8 @@ CREATE TABLE shows(
     name varchar(256) not null,
     date date not null,
     durationTime time not null,
-    capacityLimit integer not null
+    capacityLimit integer not null,
+    highlight BIT not null default 0
     );
 
 create table product (
@@ -65,5 +66,6 @@ create table product (
     name varchar(256) not null,
     availableQuantity integer not null,
     availableDate time not null,
-    productType varchar(256) not null
+    productType varchar(256) not null,
+    isActive BIT not null default 1
     );

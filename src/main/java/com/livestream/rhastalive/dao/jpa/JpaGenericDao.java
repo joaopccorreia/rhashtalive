@@ -1,5 +1,6 @@
-package com.livestream.rhastalive.dao;
+package com.livestream.rhastalive.dao.jpa;
 
+import com.livestream.rhastalive.dao.Dao;
 import com.livestream.rhastalive.model.Model;
 
 import javax.persistence.EntityManager;
@@ -11,18 +12,18 @@ import java.util.List;
  * @see Dao
  * @param <T> the model type
  */
-public abstract class GenericDao<T extends Model> implements Dao<T> {
+public abstract class JpaGenericDao<T extends Model> implements Dao<T> {
 
     @PersistenceContext
     protected EntityManager em;
-    private Class<T> modelType;
+    protected Class<T> modelType;
 
     /**
      * Initializes a new JPA DAO instance given a session manager and a model type
      *
      * @param modelType the model type
      */
-    public GenericDao(Class<T> modelType) {
+    public JpaGenericDao(Class<T> modelType) {
         this.modelType = modelType;
     }
 
