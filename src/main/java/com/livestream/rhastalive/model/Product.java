@@ -25,4 +25,7 @@ public class Product extends GenericModel {
 
     @Column(name = "productType")
     private String productType;
+
+    @Column(name = "isActive")
+    private Boolean isActive;
 }
