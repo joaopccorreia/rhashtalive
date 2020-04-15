@@ -1,38 +1,43 @@
 package com.livestream.rhastalive.service;
 
-import com.livestream.rhastalive.dao.CustomerDao;
+import com.livestream.rhastalive.dao.jpa.JpaCustomerDao;
 import com.livestream.rhastalive.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService {
 
-    private CustomerDao customerDao;
+    private JpaCustomerDao jpaCustomerDao;
 
     @Autowired
-    public void setCustomerDao(CustomerDao customerDao) {
-        this.customerDao = customerDao;
+    public void setJpaCustomerDao(JpaCustomerDao jpaCustomerDao) {
+        this.jpaCustomerDao = jpaCustomerDao;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Customer get(Integer id) {
-        return customerDao.findById(id);
+        return jpaCustomerDao.findById(id);
     }
 
     @Override
+    @Transactional
     public Customer save(Customer customer) {
-        return customerDao.saveOrUpdate(customer);
+        return jpaCustomerDao.saveOrUpdate(customer);
     }
 
     @Override
+    @Transactional
     public void delete(Integer id) {
 
-        customerDao.delete(id);
+        jpaCustomerDao.delete(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Customer> list() {
-        return customerDao.findAll();
+        return jpaCustomerDao.findAll();
     }
 }
