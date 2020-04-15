@@ -10,5 +10,4 @@ public interface ProductDao extends Dao<Product> {
 
     public List<Product> findMerchandising();
 
-
 }
