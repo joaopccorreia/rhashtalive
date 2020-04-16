@@ -26,7 +26,7 @@
 <div class="container">
     <div th:replace="action :: action"></div>
     <div class="card-deck">
-        <div th:each="show : ${shows}" class="card">
+        <div th:object="${shows}" class="card">
             <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fen.metal-tracker.com%2Ftorrents%2Fimages%2F1515410.jpg&f=1&nofb=1"
                  class="card-img-top" alt="...">
             <div class="card-body">
