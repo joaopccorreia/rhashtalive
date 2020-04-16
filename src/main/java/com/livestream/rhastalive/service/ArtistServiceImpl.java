@@ -18,7 +18,7 @@ public class ArtistServiceImpl implements ArtistService {
         this.dao = dao;
     }
 
-    public List<Artist> findAllShows() {
+    public List<Artist> findAll() {
 
         return dao.findAll();
     }
@@ -35,7 +35,7 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Transactional
-    public void deleteShow (Integer id) {
+    public void delete(Integer id) {
 
         dao.delete(id);
     }

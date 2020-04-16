@@ -1,4 +1,6 @@
 package com.livestream.rhastalive.dao;
 
-public interface ArtistDao {
+import com.livestream.rhastalive.model.users.Artist;
+
+public interface ArtistDao extends Dao<Artist> {
 }
