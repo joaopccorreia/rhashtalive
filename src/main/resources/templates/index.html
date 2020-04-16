@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <title>Stream</title>
+</head>
+<body>
+<div class="wrapper">
+    <div>
+        <h1>video webcam</h1>
+        <video id="localVideo" autoplay></video>
+    </div>
+    <div>
+        <h1>server</h1>
+        <video class="server-video" autoplay></video>
+    </div>
+<!--    <div>-->
+<!--        <h1>server</h1>-->
+<!--        <canvas></canvas>-->
+<!--    </div>-->
+    <div>
+        <h1>server</h1>
+        <img alt="video from server"/>
+    </div>
+</div>
+<script th:src="@{/script/index.js}" rel="script" type="text/javascript"></script>
+</body>
+</html>
