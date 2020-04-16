@@ -83,6 +83,7 @@ CREATE TABLE shows(
     date date not null,
     durationTime time not null,
     capacityLimit integer not null,
+    description varchar(256) not null,
     highlight BIT not null default 0
     );
 
