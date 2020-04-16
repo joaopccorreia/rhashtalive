@@ -2,7 +2,7 @@ package com.livestream.rhastalive.controller;
 
 import com.livestream.rhastalive.DTO.ProductDto;
 import com.livestream.rhastalive.DTO.converters.ProductDtoToProduct;
-import com.livestream.rhastalive.DTO.converters.ShowsToShowsDto;
+import com.livestream.rhastalive.DTO.converters.ShowToShowsDto;
 import com.livestream.rhastalive.service.ProductService;
 import com.livestream.rhastalive.service.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class ProductController {
 
     private ProductService productService;
     private ProductDtoToProduct productDtoToProduct;
-    private ShowsToShowsDto showsToShowsDto;
+    private ShowToShowsDto showToShowsDto;
     private ShowService showService;
 
     @Autowired
@@ -35,7 +35,7 @@ public class ProductController {
     @GetMapping("/shop")
     public String listAllShows(Model model){
 
-        model.addAttribute("shows", showsToShowsDto.convert(showService.findAllShows()));
+        model.addAttribute("shows", showToShowsDto.convert(showService.findAllShows()));
         return "/static/templates/shopPage";
     }
 
