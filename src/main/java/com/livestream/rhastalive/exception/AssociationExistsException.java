@@ -1,8 +1,10 @@
 package com.livestream.rhastalive.exception;
 
-public class AssociationExistsException extends Exception{
+import com.livestream.rhastalive.errors.ErrorMessage;
+
+public class AssociationExistsException extends RhastaliveExceptionHandler {
 
     public AssociationExistsException() {
-        String associationExists = "Entity contains association with another entity";
+        super(ErrorMessage.ASSOCIATION_EXISTS);
     }
 }
