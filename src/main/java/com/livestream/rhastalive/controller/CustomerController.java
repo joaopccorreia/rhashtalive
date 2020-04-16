@@ -7,12 +7,9 @@ import com.livestream.rhastalive.DTO.converters.CustomerToCustomerDto;
 import com.livestream.rhastalive.exception.AssociationExistsException;
 import com.livestream.rhastalive.exception.CustomerNotFoundException;
 import com.livestream.rhastalive.model.users.Customer;
-import com.livestream.rhastalive.model.users.User;
 import com.livestream.rhastalive.service.CustomerService;
 import com.livestream.rhastalive.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -73,7 +70,7 @@ public class CustomerController {
     @PostMapping(path = {"/", ""}, params = "action=save")
     public String saveCustomer(@Valid @ModelAttribute("customer") CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return "home";
+            return "redirect:/home";
         }
 
         Customer savedCustomer = customerService.save(customerDtoToCustomer.convert(customerDto));
