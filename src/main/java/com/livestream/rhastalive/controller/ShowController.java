@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/concert")
 public class ShowController {
 
     private ShowService showService;
@@ -19,7 +19,7 @@ public class ShowController {
         this.showService = showService;
     }
 
-    @GetMapping(path = {"/show","","/"})
+    @GetMapping(path = {"/", ""})
     public ModelAndView showShopPage(){
         return new ModelAndView("shopPage");
     }
