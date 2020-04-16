@@ -67,29 +67,28 @@
 
 .card.-first {
     top: 20%;
-    right: 10%;
+    right: 450px;
     transform: rotate(15deg);
 }
 
 .card.-second {
-    top: 15%;
-    right: 35%;
+    top: 20%;
+    right: 100px;
     transform: rotate(-15deg);
 }
 
 .card.-third {
-    top: 50%;
-    right: 15%;
+    top: 60%;
+    right: 400px;
     transform: rotate(30deg);
 }
 
 .card.-fourth {
-    top: 50%;
-    right: 35%;
+    top: 55%;
+    right: 70px;
     transform: rotate(10deg);
 }
 
 .card:hover {
-    transform: rotate(0deg);
-    transform: scale(1.5);
+    transform: rotate(0deg) scale(1.5);
 }
