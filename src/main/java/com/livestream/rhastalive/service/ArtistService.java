@@ -1,5 +1,7 @@
 package com.livestream.rhastalive.service;
 
+import com.livestream.rhastalive.model.users.Artist;
+
 import java.util.List;
 
 public interface ArtistService {

@@ -1,12 +1,15 @@
-package com.livestream.rhastalive.model;
+package com.livestream.rhastalive.model.users;
 
 
+import com.livestream.rhastalive.model.Address;
+import com.livestream.rhastalive.model.GenericModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,18 +19,29 @@ public class Customer extends GenericModel {
 
     @Column(name = "firstName")
     private String firstName;
+
     @Column(name = "lastName")
     private String lastName;
+
     @Column(name = "vatNumber")
     private String vatNumber;
+
     @Column(name = "email")
     private String email;
-    @Column(name = "password")
-    private String password;
+
     @Column(name = "phone")
     private String phone;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "customer"
+    )
     @Column(name = "address")
-    private Integer addressId;
+    private List<Address> address = new ArrayList<>();
+
+    @OneToOne
+    private User user;
+
 
     @Override
     public String toString() {
@@ -36,9 +50,8 @@ public class Customer extends GenericModel {
                 ", lastName='" + lastName + '\'' +
                 ", vatNumber='" + vatNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", password='" + user.getPassword() + '\'' +
                 ", phone='" + phone + '\'' +
-                ", addressId=" + addressId +
                 '}';
     }
 }
