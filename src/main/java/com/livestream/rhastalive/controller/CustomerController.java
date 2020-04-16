@@ -16,18 +16,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("customer")
+@RequestMapping("/customer")
 public class CustomerController {
 
+    private Customer customer;
+
+    private CustomerService customerService;
     private UserServiceImpl userService;
 
     private CustomerToCustomerDto customerToCustomerDto;
@@ -48,39 +48,48 @@ public class CustomerController {
         this.customerDtoToCustomer = customerDtoToCustomer;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/add")
+    @Autowired
+    public void setCustomerService(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
+    @Autowired
+    public void setCustomerToCustomerDto(CustomerToCustomerDto customerToCustomerDto) {
+        this.customerToCustomerDto = customerToCustomerDto;
+    }
+
+    @GetMapping("/add")
     public String addCustomer(Model model) {
         model.addAttribute("customer", new CustomerDto());
-        return "customer/add-update";
+        return "shopPage";
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{userName}/edit")
-    public String editCustomer(@PathVariable String userName, Model model) {
-        model.addAttribute("customer", customerToCustomerDto.convert(userService.loadUserByUsername(userName)));
-        return "customer/add-update";
+    @GetMapping("/{id}/edit")
+    public String editCustomer(@PathVariable Integer id, Model model) {
+        model.addAttribute("customer", customerToCustomerDto.convert(customerService.get(id)));
+        return "shopPage";
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/", ""}, params = "action=save")
+    @PostMapping(path = {"/", ""}, params = "action=save")
     public String saveCustomer(@Valid @ModelAttribute("customer") CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return "customer/add-update";
+            return "home";
         }
 
         Customer savedCustomer = customerService.save(customerDtoToCustomer.convert(customerDto));
 
         redirectAttributes.addFlashAttribute("lastAction", "Saved" + savedCustomer.getFirstName() + " "
                 + savedCustomer.getLastName());
-        return "redirect:/customer/" + savedCustomer.getUserName();
+        return "shopPage";
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "{userName}/delete")
-    public String deleteCustomer(@PathVariable String userName, RedirectAttributes redirectAttributes)
+    @GetMapping (path = "{id}/delete")
+    public String deleteCustomer(@PathVariable Integer id, RedirectAttributes redirectAttributes)
             throws AssociationExistsException, CustomerNotFoundException {
-        Customer customer = customerService.get(userName);
-        customerService.delete(userName);
+        Customer customer = customerService.get(id);
+        customerService.delete(id);
         redirectAttributes.addFlashAttribute("lastAction", "Deleted" + customer.getFirstName() + " " + customer.getLastName());
-        return "redirect:/customer";
+        return "home";
     }
 
-     */
 }
