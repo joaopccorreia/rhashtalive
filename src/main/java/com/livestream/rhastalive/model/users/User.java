@@ -11,8 +11,9 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "user")
-public class User extends GenericModel {
+public class User {
 
+    @Id
     private String userName;
     private String password;
     private boolean active;
@@ -26,7 +27,7 @@ public class User extends GenericModel {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userName"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private List<Role> roles;

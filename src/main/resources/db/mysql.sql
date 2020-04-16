@@ -2,17 +2,6 @@ DROP DATABASE IF EXISTS rhastalive;
 CREATE DATABASE rhastalive;
 USE rhastalive;
 
-CREATE TABLE address(
-	id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    creationTime timestamp not null,
-    updateTime timestamp not null,
-    version integer not null,
-    address varchar(256) not null,
-    zipcode varchar(256) not null,
-    city varchar(256) not null,
-    country varchar(256) not null
-    );
-
 CREATE TABLE artist(
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
     creationTime timestamp not null,
@@ -23,12 +12,8 @@ CREATE TABLE artist(
     artisticName varchar(256) not null,
     vatNumber varchar(256) not null unique,
     email varchar(256) not null,
-    password varchar(256) not null,
-    phone integer unique not null,
-    address_id integer not null,
-
-    foreign key (address_id) references address(id)
-    );
+    phone integer unique not null
+);
 
 CREATE TABLE customer(
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -37,20 +22,63 @@ CREATE TABLE customer(
     version integer not null,
     firstName VARCHAR(256) not null,
     lastName VARCHAR(256) not null,
-    vatNumber varchar(256) unique,
+    vatNumber varchar(256) not null unique,
     email varchar(256) not null,
-    password varchar(256) not null,
-    phone integer,
-    address_id integer,
+    phone integer unique not null
+);
 
-    foreign key (address_id) references address(id)
-    );
+CREATE TABLE user (
+    userName VARCHAR(256) Primary Key,
+    password VARCHAR(256) not null,
+    active BIT not null default 1,
+    customer_id integer,
+    artist_id integer,
+    
+    foreign key (customer_id) references customer(id),
+    foreign key (artist_id) references artist(id)
+);
 
-CREATE TABLE shows(
+CREATE TABLE role (
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
     creationTime timestamp not null,
     updateTime timestamp not null,
     version integer not null,
+    name VARCHAR(256) not null
+);
+
+CREATE TABLE address(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp,
+    updateTime timestamp,
+    version integer,
+    address varchar(256) not null,
+    zipCode varchar(256) not null,
+    city varchar(256) not null,
+    country varchar(256) not null,
+    customer_id integer,
+    artist_id integer,
+
+    foreign key (customer_id) references customer(id),
+    foreign key (artist_id) references artist(id)
+    );
+    
+    create table product (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp,
+    updateTime timestamp,
+    version integer,
+    name varchar(256) not null,
+    availableQuantity integer not null,
+    availableDate time not null,
+    productType varchar(256) not null,
+    isActive BIT not null default 1
+    );
+
+CREATE TABLE shows(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp,
+    updateTime timestamp,
+    version integer,
     name varchar(256) not null,
     date date not null,
     durationTime time not null,
@@ -58,14 +86,10 @@ CREATE TABLE shows(
     highlight BIT not null default 0
     );
 
-create table product (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    creationTime timestamp not null,
-    updateTime timestamp not null,
-    version integer not null,
-    name varchar(256) not null,
-    availableQuantity integer not null,
-    availableDate date not null,
-    productType varchar(256) not null,
-    isActive BIT not null default 1
-    );
+CREATE TABLE user_role (
+	user_id varchar(256),
+    role_id integer,
+
+    foreign key (user_id) references user(userName),
+    foreign key (role_id) references role(id)
+);
