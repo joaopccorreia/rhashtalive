@@ -11,7 +11,7 @@ public class MainController {
 
     @GetMapping
     public ModelAndView showHomePage() {
-        return new ModelAndView("videotest");
+        return new ModelAndView("home");
     }
 
     @GetMapping("/login")

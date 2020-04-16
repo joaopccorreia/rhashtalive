@@ -1,29 +1,95 @@
-use rhastalive;
+DROP DATABASE IF EXISTS rhastalive;
+CREATE DATABASE rhastalive;
+USE rhastalive;
 
-INSERT INTO customer(id, creationTime, updateTime, version, firstName, lastName, vatNumber, email, phone) VALUES
-  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Rui', 'Ferrão', 2223423 , 'ruiferrao@gmail.com', 913958877),
-  (2, TIMESTAMP '2017-10-10 08:45:56.481', TIMESTAMP '2017-10-10 08:45:56.481', 0, 'Sergio', 'Gouveia',12321,'sergiogouveia@gmail.com', 7788),
-  (3, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'Bruno', 'Ferreira', 23432,'brunoferreira@gmail.com', 12412),
-  (4, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'No name', 'No last name', 23242354, 'noname@gmail.com', 64567547);
-  
-INSERT INTO artist(id, creationTime, updateTime, version, firstName, lastName, artisticName ,vatNumber, email, phone) VALUES
-  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Joaquim', 'Almeida', "Jo Jo", 2223423 , 'jojo@gmail.com', 9124);
-  
-  INSERT INTO user(userName, password, active, customer_id, artist_id) VALUES
-  ('rui', 'pass', 1 , 1, 1),
-  ('sergio', 'pass',1, 2, 1 ),
-  ('bruno', 'pass', 1, 3, 1),
-  ('noname', 'pass', 1, 4, 1);
+CREATE TABLE artist(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp not null,
+    updateTime timestamp not null,
+    version integer not null,
+    firstName VARCHAR(256) not null,
+    lastName VARCHAR(256) not null,
+    artisticName varchar(256) not null,
+    vatNumber varchar(256) not null unique,
+    email varchar(256) not null,
+    phone integer unique not null
+);
 
-INSERT INTO role(id, creationTime, updateTime, version, name) VALUES
-  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'USER'),
-  (2, TIMESTAMP '2017-10-10 08:45:56.481', TIMESTAMP '2017-10-10 08:45:56.481', 0, 'ADMIN'),
-  (3, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'ARTIST');
+CREATE TABLE customer(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp not null,
+    updateTime timestamp not null,
+    version integer not null,
+    firstName VARCHAR(256) not null,
+    lastName VARCHAR(256) not null,
+    vatNumber varchar(256) not null unique,
+    email varchar(256) not null,
+    phone integer unique not null
+);
 
-INSERT INTO user_role(user_id, role_id) VALUES
-  ('rui', 1),
-  ('sergio', 1),
-  ('rui', 3),
-  ('bruno', 2),
-  ('noname', 1),
-  ('noname', 3);
+CREATE TABLE user (
+    userName VARCHAR(256) Primary Key,
+    password VARCHAR(256) not null,
+    active BIT not null default 1,
+    customer_id integer,
+    artist_id integer,
+
+    foreign key (customer_id) references customer(id) ON UPDATE CASCADE,
+    foreign key (artist_id) references artist(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE role (
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp not null,
+    updateTime timestamp not null,
+    version integer not null,
+    name VARCHAR(256) not null
+);
+
+CREATE TABLE address(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp,
+    updateTime timestamp,
+    version integer,
+    address varchar(256) not null,
+    zipCode varchar(256) not null,
+    city varchar(256) not null,
+    country varchar(256) not null,
+    customer_id integer,
+    artist_id integer,
+
+    foreign key (customer_id) references customer(id) ON UPDATE CASCADE,
+    foreign key (artist_id) references artist(id) ON UPDATE CASCADE
+    );
+
+    create table product (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp,
+    updateTime timestamp,
+    version integer,
+    name varchar(256) not null,
+    availableQuantity integer not null,
+    availableDate time not null,
+    productType varchar(256) not null,
+    isActive BIT not null default 1
+    );
+
+CREATE TABLE shows(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp,
+    updateTime timestamp,
+    version integer,
+    name varchar(256) not null,
+    date date not null,
+    durationTime time not null,
+    capacityLimit integer not null,
+    highlight BIT not null default 0
+    );
+
+CREATE TABLE user_role (
+	user_id varchar(256),
+    role_id integer,
+
+    foreign key (user_id) references user(userName),
+    foreign key (role_id) references role(id)
+);

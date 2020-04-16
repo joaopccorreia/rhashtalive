@@ -1,5 +1,6 @@
 package com.livestream.rhastalive.service;
 
+import com.livestream.rhastalive.model.Product;
 import com.livestream.rhastalive.model.users.Customer;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface CustomerService {
     void delete(Integer id);
 
     List<Customer> list();
+
+    List<Product> listOfBoughtProducts(Integer id);
 
 
 

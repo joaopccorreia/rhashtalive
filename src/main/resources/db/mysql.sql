@@ -33,9 +33,9 @@ CREATE TABLE user (
     active BIT not null default 1,
     customer_id integer,
     artist_id integer,
-    
-    foreign key (customer_id) references customer(id),
-    foreign key (artist_id) references artist(id)
+
+    foreign key (customer_id) references customer(id) ON UPDATE CASCADE,
+    foreign key (artist_id) references artist(id) ON UPDATE CASCADE
 );
 
 CREATE TABLE role (
@@ -58,10 +58,10 @@ CREATE TABLE address(
     customer_id integer,
     artist_id integer,
 
-    foreign key (customer_id) references customer(id),
-    foreign key (artist_id) references artist(id)
+    foreign key (customer_id) references customer(id) ON UPDATE CASCADE,
+    foreign key (artist_id) references artist(id) ON UPDATE CASCADE
     );
-    
+
     create table product (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     creationTime timestamp,
@@ -92,4 +92,12 @@ CREATE TABLE user_role (
 
     foreign key (user_id) references user(userName),
     foreign key (role_id) references role(id)
+);
+
+CREATE TABLE customer_product (
+	customer_id integer,
+    product_id integer,
+
+    foreign key (customer_id) references customer(id),
+    foreign key (product_id) references product(id)
 );

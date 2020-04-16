@@ -40,7 +40,11 @@ public class Artist extends GenericModel {
     @Column(name = "address")
     private List<Address> address = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            mappedBy = "artist",
+            fetch = FetchType.LAZY
+    )
     private User user;
 
 }
