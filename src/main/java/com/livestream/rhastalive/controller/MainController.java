@@ -11,7 +11,16 @@ public class MainController {
 
     @GetMapping
     public ModelAndView showHomePage() {
+        return new ModelAndView("home");
+    }
+
+    @GetMapping("/login")
+    public ModelAndView login() {
         return new ModelAndView("index");
     }
 
+    @GetMapping("/signup")
+    public ModelAndView signup() {
+        return null;
+    }
 }
