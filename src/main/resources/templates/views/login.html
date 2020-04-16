@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/global.css}">
+</head>
+
+<body>
+<script src="login.js"></script>
+
+<input type="button" id="user_button" value="User" class="btn btn-primary"/>
+<input type="button" id="artist_button" value="Artist" class="btn btn-primary"/>
+
+<form name="login-form">
+    <div class="form-group">
+        <label for="email" class="from-control-label">First name</label>
+        <input type="text" id="email" required/>
+    </div>
+    <div class="form-group">
+        <label for="password" class="from-control-label">First name</label>
+        <input type="password" id="password" required/>
+    </div>
+    <input type="button" id="login_button" value="Login" class="btn btn-primary" onclick="validate()"/>
+</form>
+
+</body>
+</html>
