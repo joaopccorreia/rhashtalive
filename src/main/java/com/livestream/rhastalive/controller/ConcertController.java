@@ -10,7 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/concert")
-public class ShowController {
+public class ConcertController {
+
 
     private ShowService showService;
 
@@ -24,9 +25,14 @@ public class ShowController {
         return new ModelAndView("shopPage");
     }
 
-    @GetMapping("/concertDetails.html")
+    @GetMapping("/details")
     public ModelAndView showDetails() {
         return new ModelAndView("concertDetails");
+    }
+
+    @GetMapping("/add")
+    public ModelAndView addConcert() {
+        return null;
     }
 
 }
