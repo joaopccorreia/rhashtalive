@@ -1,9 +1,8 @@
 package com.livestream.rhastalive.controller;
 
-import com.livestream.rhastalive.DTO.ShowsDto;
+import com.livestream.rhastalive.DTO.ShowDto;
 import com.livestream.rhastalive.DTO.converters.ArtistToArtistDto;
 import com.livestream.rhastalive.DTO.converters.ShowsDtoToShows;
-import com.livestream.rhastalive.model.Show;
 import com.livestream.rhastalive.service.ArtistService;
 import com.livestream.rhastalive.service.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +55,7 @@ public class ConcertController {
     @GetMapping("/artist/{id}/add")
     public String addShowPage(@PathVariable Integer id, Model model) {
 
-        model.addAttribute("show", new ShowsDto());
+        model.addAttribute("show", new ShowDto());
         model.addAttribute("artist", toArtistDto.convert(artistService.findById(id)));
 
         return "addConcert";
@@ -64,11 +63,11 @@ public class ConcertController {
     }
 
     @PostMapping("/artist/{id}/add")
-    public String addShow(@ModelAttribute("show") ShowsDto showsDto) {
+    public String addShow(@ModelAttribute("show") ShowDto showDto) {
 
-        showService.saveOrUpdate(toShows.convert(showsDto));
+        showService.saveOrUpdate(toShows.convert(showDto));
 
-        return "redirect:/";
+        return "shopPage";
 
     }
 
