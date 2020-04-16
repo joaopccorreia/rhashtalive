@@ -1,7 +1,7 @@
 package com.livestream.rhastalive.service;
 
 import com.livestream.rhastalive.dao.jpa.JpaArtistDao;
-import com.livestream.rhastalive.model.Artist;
+import com.livestream.rhastalive.model.users.Artist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

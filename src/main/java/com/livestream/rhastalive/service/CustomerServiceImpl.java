@@ -1,12 +1,14 @@
 package com.livestream.rhastalive.service;
 
 import com.livestream.rhastalive.dao.jpa.JpaCustomerDao;
-import com.livestream.rhastalive.model.Customer;
+import com.livestream.rhastalive.model.users.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
     private JpaCustomerDao jpaCustomerDao;
