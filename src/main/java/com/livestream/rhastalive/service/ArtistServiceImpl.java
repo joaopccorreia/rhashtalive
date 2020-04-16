@@ -1,7 +1,6 @@
 package com.livestream.rhastalive.service;
 
 import com.livestream.rhastalive.dao.jpa.JpaArtistDao;
-import com.livestream.rhastalive.model.Artist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +17,7 @@ public class ArtistServiceImpl implements ArtistService {
         this.dao = dao;
     }
 
-    public List<Artist> findAllShows() {
+    public List<Artist> findAll() {
 
         return dao.findAll();
     }
@@ -35,7 +34,7 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Transactional
-    public void deleteShow (Integer id) {
+    public void delete(Integer id) {
 
         dao.delete(id);
     }

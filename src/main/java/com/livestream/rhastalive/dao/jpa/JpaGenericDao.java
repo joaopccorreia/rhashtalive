@@ -27,6 +27,10 @@ public abstract class JpaGenericDao<T extends Model> implements Dao<T> {
         this.modelType = modelType;
     }
 
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
     /**
      * @see Dao#findAll()
      */
