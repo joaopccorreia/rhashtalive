@@ -1,86 +1,66 @@
-window.onload = function () {
+$(document).ready(function() {
 
-    var firstName = document.getElementById('firstName').value;
-    var lastName = document.getElementById('lastName').value;
-    var vatNumber = document.getElementById('vatNumber').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('confirmPassword').value;
-    var phone = document.getElementById('phone').value;
+    var userName = $("#userName");
+    var firstName = $("#firstName");
+    var lastName = $("#lastName");
+    var vatNumber = $("#vatNumber");
+    var email = $("#email");
+    var password = $("#password");
+    var confirmPassword = $("#confirmPassword");
+    var phone = $("#phone");
+
+    var letters = /^[A-Za-z]+$/;
+    var numbers = /^[0-9]+$/;
+    var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var alphaNum = /^[0-9a-zA-Z]+$/;
 
     function validate() {
-        if (firstName === "") {
-        alert('Please enter your first name.');
-        return false;
+        if (userName.match(letters)) {
+            return true;
+        } else {
+            alert('Enter a valid username');
+            return false;
         }
-        var letters = /^[A-Za-z]+$/;
         if (firstName.match(letters)) {
             return true;
         } else {
-            alert('Must use alphabet characters only!');
-            return false;
-        }
-        if (lastName === "") {
-            alert('Please enter your last name.');
+            alert('Enter a valid first name');
             return false;
         }
         if (lastName.match(letters)) {
             return true;
         } else {
-            alert('Must use alphabet characters only!');
+            alert('Enter a valid last name');
             return false;
         }
-        if (vatNumber === "") {
-            alert('Please enter your VAT number.');
-            return false;
-        }
-        var numbers = /^[0-9]+$/;
         if (vatNumber.match(numbers)) {
             return true;
         } else {
-            alert('Must use numeric characters only!');
+            alert('Use numeric characters only!');
             return false;
         }
-        if (email === "") {
-            alert('Please enter your email.');
-            return false;
-        }
-        var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (email.match(mailFormat)) {
             return true;
         } else {
-            alert('Must introduce a valid email!');
+            alert('Introduce a valid email!');
             return false;
         }
-        if (password === "") {
-            alert('Please enter your password.');
-            return false;
-        }
-        var alphaNum = /^[0-9a-zA-Z]+$/;
         if (password.match(alphaNum)) {
             return true;
         } else {
-            alert('Must use alphanumeric characters only!');
-            return false;
-        }
-        if (confirmPassword === "") {
-            alert('Please confirm your password.');
+            alert('Use alphanumeric characters only!');
             return false;
         }
         if (confirmPassword.match(alphaNum)) {
             return true;
         } else {
-            alert('Must use alphanumeric characters only!');
+            alert('Use alphanumeric characters only!');
             return false;
         }
         if (password === confirmPassword) {
             return true;
         } else {
             alert('Passwords don\'t match');
-            return false;
-        }
-        if (phone === "") {
-            alert('Please enter your phone number.');
             return false;
         }
         if (phone.match(numbers)) {
@@ -90,12 +70,6 @@ window.onload = function () {
             return false;
         }
     }
-
-    var btnUser = document.getElementById('user_button');
-    btnUser.addEventListener("click", validate, false);
-
-    var btnArtist = document.getElementById('artist_button');
-    btnArtist.addEventListener("click", validate, false);
 
     function sendData () {
 
@@ -124,4 +98,7 @@ window.onload = function () {
         req.send(data);
         return false;
     };
-};
+
+
+
+});

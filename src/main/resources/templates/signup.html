@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="../static/styles/global.css" /> -->
+    <link rel="stylesheet" href="../static/styles/signup.css" />
+</head>
+
+<body>
+    <div class="signup-box">
+
+        <div class="image-box">
+            <div class="thumbnail">
+                <img src=""/>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button>User</button>
+            <button>Artist</button>
+        </div>
+
+        <div class="data-box">
+            <script src="../static/script/signup.js"></script>
+
+            <div class="form">
+                <form name="signup-form">
+                    <div class="form-group">
+                        <label for="userName" class="from-control-label">Username</label>
+                        <input type="text" id="userName" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstName" class="from-control-label">First name</label>
+                        <input type="text" id="firstName" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName" class="from-control-label">Last name</label>
+                        <input type="text" id="lastName" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vatNumber" class="from-control-label">VAT number</label>
+                        <input type="text" id="vatNumber" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="from-control-label">Email</label>
+                        <input type="text" id="email" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="from-control-label">Password</label>
+                        <input type="password" id="password" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="from-control-label">Confirm password</label>
+                        <input type="password" id="confirmPassword" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="from-control-label">Phone number</label>
+                        <input type="text" id="phone" required/>
+                    </div>
+
+                    <button>Sign Up</button>
+                    <p class="message">Already Registered? <a href="login.html">Login</a> </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
