@@ -19,6 +19,7 @@ public class Show extends GenericModel {
     private Date date;
     private Time durationTime;
     private Integer capacityLimit;
+    private String description;
     private boolean highlight;
 
     @OneToOne

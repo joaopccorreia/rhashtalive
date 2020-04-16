@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/concert")
 public class ConcertController {
 
+
     private ShowService showService;
     private ArtistService artistService;
     private ArtistToArtistDto toArtistDto;
@@ -55,7 +56,7 @@ public class ConcertController {
     @GetMapping("/artist/{id}/add")
     public String addShowPage(@PathVariable Integer id, Model model) {
 
-        model.addAttribute("show", new Show());
+        model.addAttribute("show", new ShowsDto());
         model.addAttribute("artist", toArtistDto.convert(artistService.findById(id)));
 
         return "addConcert";
@@ -63,7 +64,7 @@ public class ConcertController {
     }
 
     @PostMapping("/artist/{id}/add")
-    public String addShow(@PathVariable Integer id, @ModelAttribute("show") ShowsDto showsDto) {
+    public String addShow(@ModelAttribute("show") ShowsDto showsDto) {
 
         showService.saveOrUpdate(toShows.convert(showsDto));
 

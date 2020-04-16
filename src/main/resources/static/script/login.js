@@ -25,5 +25,3 @@ window.onload = function () {
         req.send();
     }
 };
-
-new BCryptPasswordEncoder().encode(user.getPassword()) //pôr no codigo para comprar pass e no user.getPassword() poe-se a pass que for dada

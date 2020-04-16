@@ -1,9 +1,7 @@
 package com.livestream.rhastalive.model.users;
 
-import com.livestream.rhastalive.model.GenericModel;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.List;
