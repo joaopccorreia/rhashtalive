@@ -16,7 +16,7 @@ public class Show extends GenericModel {
 
     private String name;
     private Date date;
-    private Time durationime;
+    private Time durationTime;
     private Integer capacityLimit;
-    private boolean highLight;
+    private boolean highlight;
 }
