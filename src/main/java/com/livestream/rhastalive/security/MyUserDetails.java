@@ -2,9 +2,12 @@ package com.livestream.rhastalive.security;
 
 import com.livestream.rhastalive.model.users.Role;
 import com.livestream.rhastalive.model.users.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.*;
 
@@ -15,7 +18,7 @@ public class MyUserDetails implements UserDetails {
     private List<SimpleGrantedAuthority> grantedAuthorityList;
 
     public MyUserDetails(User user) {
-        this.password = user.getPassword();
+        this.password = new BCryptPasswordEncoder().encode(user.getPassword());
         this.username = user.getUserName();
         this.isActive = user.isActive();
         this.grantedAuthorityList = convertRolesToAuthority(user.getRoles());
@@ -33,8 +36,6 @@ public class MyUserDetails implements UserDetails {
 
         return simpleGrantedAuthorities;
     }
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
