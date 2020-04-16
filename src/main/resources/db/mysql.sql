@@ -65,7 +65,7 @@ create table product (
     version integer not null,
     name varchar(256) not null,
     availableQuantity integer not null,
-    availableDate time not null,
+    availableDate date not null,
     productType varchar(256) not null,
     isActive BIT not null default 1
     );

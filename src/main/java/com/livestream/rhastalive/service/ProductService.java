@@ -39,7 +39,7 @@ public interface ProductService {
      * @param product the Product to add
      * @return product id
      */
-    Integer add(Product product);
+    Product add(Product product);
 
     /**
      * Removes a product from the service
@@ -55,6 +55,6 @@ public interface ProductService {
      * @param product the Product to edit
      * @return if successfully edited
      */
-    int edit(Product product);
+    Product edit(Product product);
 
 }

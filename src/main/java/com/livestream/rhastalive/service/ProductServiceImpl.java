@@ -43,8 +43,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public Integer add(Product product) {
-        return productDao.saveOrUpdate(product).getId();
+    public Product add(Product product) {
+        return productDao.saveOrUpdate(product);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public int edit(Product product) {
-        return productDao.saveOrUpdate(product).getId();
+    public Product edit(Product product) {
+        return productDao.saveOrUpdate(product);
     }
 }
