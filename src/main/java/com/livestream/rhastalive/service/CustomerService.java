@@ -1,6 +1,6 @@
 package com.livestream.rhastalive.service;
 
-import com.livestream.rhastalive.model.Customer;
+import com.livestream.rhastalive.model.users.Customer;
 
 import java.util.List;
 
