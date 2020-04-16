@@ -2,6 +2,7 @@ package com.livestream.rhastalive.services;
 
 
 import com.livestream.rhastalive.dao.jpa.JpaArtistDao;
+import com.livestream.rhastalive.model.users.Artist;
 import com.livestream.rhastalive.service.ArtistServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
