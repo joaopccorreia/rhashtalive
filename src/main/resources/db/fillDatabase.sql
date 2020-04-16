@@ -5,10 +5,10 @@ INSERT INTO customer(id, creationTime, updateTime, version, firstName, lastName,
   (2, TIMESTAMP '2017-10-10 08:45:56.481', TIMESTAMP '2017-10-10 08:45:56.481', 0, 'Sergio', 'Gouveia',12321,'sergiogouveia@gmail.com', 7788),
   (3, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'Bruno', 'Ferreira', 23432,'brunoferreira@gmail.com', 12412),
   (4, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'No name', 'No last name', 23242354, 'noname@gmail.com', 64567547);
-  
+
 INSERT INTO artist(id, creationTime, updateTime, version, firstName, lastName, artisticName ,vatNumber, email, phone) VALUES
   (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Joaquim', 'Almeida', "Jo Jo", 2223423 , 'jojo@gmail.com', 9124);
-  
+
 INSERT INTO user(userName, password, active, customer_id, artist_id) VALUES
   ('rui', 'pass', 1 , 1, 1),
   ('sergio', 'pass',1, 2, 1 ),

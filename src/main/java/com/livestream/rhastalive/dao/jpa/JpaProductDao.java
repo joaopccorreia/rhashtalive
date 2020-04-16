@@ -24,4 +24,8 @@ public class JpaProductDao extends JpaGenericDao<Product> implements ProductDao 
     public List<Product> findMerchandising() {
         return em.createQuery("from " + modelType.getSimpleName() + " where productType = Merchandising", modelType).getResultList();
     }
+
+    public List<Product> findShows() {
+        return em.createQuery("from " + modelType.getSimpleName() + " where productType = Show", modelType).getResultList();
+    }
 }
