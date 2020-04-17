@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>Sign Up</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" href="../static/styles/global.css" /> -->
 
     <link rel="stylesheet" th:href="@{/styles/signup.css}"/>
-</head>
 
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="@{/styles/globlal.css}">
+    <link rel="stylesheet" th:href="@{/styles/signup.css}"/>
+    <title>Sign Up</title>
+
+</head>
 <body>
 <div class="signup-box">
 
@@ -28,15 +32,12 @@
     </div>
 
     <div class="data-box">
-        <script th:src="@{/static/script/signup.js}"></script>
-
         <div class="form">
             <form th:object="${customer}" th:action="@{'/customer'}" th:method="post" name="signup-form">
                 <div class="form-group">
                     <label for="userName" class="from-control-label">Username</label>
                     <input th:field="" type="text" id="userName" required/>
                 </div>
-
 
                 <div class="form-group">
                     <label for="firstName" class="from-control-label">First name</label>
@@ -73,6 +74,7 @@
                     <input th:field = "*{phone}" type="text" id="phone" required/>
                 </div>
 
+
                     <button>Sign Up</button>
                     <p class="message">Already Registered? <a href="/login">Login</a> </p>
                 </form>
@@ -81,6 +83,13 @@
     </div>
 
     <script th:src="@{/script/signup.js}"></script>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<button>Sign Up</button>
+<p class="message">Already Registered? <a href="login.html">Login</a></p>
 
 </body>
 </html>

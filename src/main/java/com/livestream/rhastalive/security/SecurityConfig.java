@@ -1,6 +1,6 @@
 package com.livestream.rhastalive.security;
 
-import com.livestream.rhastalive.service.UserServiceImpl;
+import com.livestream.rhastalive.service.SecureUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,11 +14,11 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserServiceImpl userService;
+    private SecureUserServiceImpl userService;
     private AccessDeniedHandler accessDeniedHandler;
 
     @Autowired
-    public void setUserDetailsService(UserServiceImpl userService) {
+    public void setUserDetailsService(SecureUserServiceImpl userService) {
         this.userService = userService;
     }
 

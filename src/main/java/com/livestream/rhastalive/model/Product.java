@@ -1,13 +1,10 @@
 package com.livestream.rhastalive.model;
 
-import com.livestream.rhastalive.model.users.Customer;
-import com.livestream.rhastalive.model.users.Role;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.sql.Date;
 
 @Getter
 @Setter
