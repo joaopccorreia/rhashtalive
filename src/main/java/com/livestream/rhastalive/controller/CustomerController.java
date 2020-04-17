@@ -57,7 +57,7 @@ public class CustomerController {
     @GetMapping("/add")
     public String addCustomer(Model model) {
         model.addAttribute("customer", new CustomerDto());
-        return "shopPage";
+        return "signup";
     }
 
     @GetMapping("/{id}/edit")
@@ -76,7 +76,7 @@ public class CustomerController {
 
         redirectAttributes.addFlashAttribute("lastAction", "Saved" + savedCustomer.getFirstName() + " "
                 + savedCustomer.getLastName());
-        return "shopPage";
+        return "redirect:/shopPage";
     }
 
     @GetMapping (path = "{id}/delete")
