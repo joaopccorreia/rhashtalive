@@ -127,7 +127,7 @@ Coded by www.creative-tim.com
                                 <h5 class="card-title"><span th:text="${show.getShow().getName()}"/></h5>
                                 <p class="card-text"><span th:text="${show.getShow().getDescription()}"/></p>
                             </div>
-                                <a href="./showPage.html" class="btn btn-secondary">Watch Show</a>
+                                <a th:href="@{'/showPage/' + ${show.getId()}}" class="btn btn-secondary">Watch Show</a>
                         </div>
                     </div>
                 </div>

@@ -35,4 +35,8 @@ public class CustomerDto  {
     private String phone;
 
     private List<Product> listOfBoughtProducts;
+
+    public List<Product> getListOfBoughtProducts() {
+        return listOfBoughtProducts;
+    }
 }

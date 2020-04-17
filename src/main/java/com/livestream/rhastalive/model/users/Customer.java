@@ -67,4 +67,12 @@ public class Customer extends GenericModel {
                 ", phone='" + phone + '\'' +
                 '}';
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }
