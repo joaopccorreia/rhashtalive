@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" th:href="@{/styles/globlal.css}">
     <link rel="stylesheet" th:href="@{/styles/signup.css}"/>
     <title>Sign Up</title>
+
 </head>
 <body>
 <div class="signup-box">
-
-    <div class="image-box">
-        <div class="thumbnail">
-            <img src=""/>
-        </div>
-    </div>
 
     <div class="buttons">
         <button>User</button>
@@ -23,56 +19,56 @@
 
     <div class="data-box">
         <div class="form">
-            <form name="signup-form">
-                <div class="form-group">
-                    <label for="userName" class="from-control-label">Username</label>
-                    <input type="text" id="userName" required/>
-                </div>
+            <form th:object="${customer}" th:action="@{/shopPage}" name="signup-form">
 
                 <div class="form-group">
                     <label for="firstName" class="from-control-label">First name</label>
-                    <input type="text" id="firstName" required/>
+                    <input th:field="*{firstName}" type="text" id="firstName" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="lastName" class="from-control-label">Last name</label>
-                    <input type="text" id="lastName" required/>
+                    <input th:field="*{lastName}" type="text" id="lastName" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="vatNumber" class="from-control-label">VAT number</label>
-                    <input type="text" id="vatNumber" required/>
+                    <input th:field="*{vatNumber} " type="text" id="vatNumber" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="email" class="from-control-label">Email</label>
-                    <input type="text" id="email" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="from-control-label">Password</label>
-                    <input type="password" id="password" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword" class="from-control-label">Confirm password</label>
-                    <input type="password" id="confirmPassword" required/>
+                    <input th:field="*{email}" type="text" id="email" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="phone" class="from-control-label">Phone number</label>
-                    <input type="text" id="phone" required/>
+                    <input th:field="*{phone}" type="text" id="phone" required/>
                 </div>
-                <button>Sign Up</button>
-                <p class="message">Already Registered? <a href="/login">Login</a></p>
+
+                <form th:object="${user}" name="signup-form">
+                    <div class="form-group">
+                        <label for="userName" class="from-control-label">Username</label>
+                        <input th:field="*{userName}" type="text" id="userName" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="from-control-label">Password</label>
+                        <input th:field="*{password}" type="password" id="password" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="from-control-label">Confirm password</label>
+                        <input type="password" id="confirmPassword" required/>
+                    </div>
+
+                    <button type="submit">Sign Up</button>
+                    <p class="message">Already Registered? <a th:href="@{/login}">Login</a></p>
+                </form>
             </form>
         </div>
     </div>
 </div>
 
-<script th:src="@{/script/signup.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<button>Sign Up</button>
-<p class="message">Already Registered? <a href="login.html">Login</a></p>
 </body>
 </html>

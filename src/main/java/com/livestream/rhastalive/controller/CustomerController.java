@@ -3,12 +3,21 @@ package com.livestream.rhastalive.controller;
 import com.livestream.rhastalive.DTO.CustomerDto;
 import com.livestream.rhastalive.DTO.ShowDto;
 import com.livestream.rhastalive.DTO.converters.*;
+import com.livestream.rhastalive.DTO.UserDto;
+import com.livestream.rhastalive.DTO.converters.CustomerDtoToCustomer;
+import com.livestream.rhastalive.DTO.converters.CustomerToCustomerDto;
+import com.livestream.rhastalive.DTO.converters.UserDtoToUser;
+import com.livestream.rhastalive.DTO.converters.UserToUserDto;
+
 import com.livestream.rhastalive.exception.AssociationExistsException;
 import com.livestream.rhastalive.exception.CustomerNotFoundException;
 import com.livestream.rhastalive.model.Product;
 import com.livestream.rhastalive.model.users.Customer;
 import com.livestream.rhastalive.service.*;
 import lombok.Setter;
+import com.livestream.rhastalive.model.users.User;
+import com.livestream.rhastalive.service.CustomerService;
+import com.livestream.rhastalive.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +35,10 @@ public class CustomerController {
     private CustomerService customerService;
     @Autowired
     private UserService userService;
+
+    private UserDtoToUser userDtoToUser;
+    private UserToUserDto userToUserDto;
+
     @Autowired
     private ShowService showService;
     @Autowired
@@ -63,7 +76,8 @@ public class CustomerController {
     @GetMapping("/add")
     public String addCustomer(Model model) {
         model.addAttribute("customer", new CustomerDto());
-        return "shopPage";
+        model.addAttribute("user", new UserDto());
+        return "signup";
     }
 
     @GetMapping("/{id}/edit/")
@@ -98,12 +112,15 @@ public class CustomerController {
     }
 
     @PostMapping("/{id}/edit/")
-    public String editCustomer(@ModelAttribute("customer") CustomerDto customerDto) {
+    public String editCustomer(@ModelAttribute("customer") CustomerDto customerDto, @ModelAttribute("user") UserDto userDto) {
 
         Customer customer = customerDtoToCustomer.convert(customerDto);
-        customerService.save(customer);
+        User user = userDtoToUser.convert(userDto);
 
-        return "redirect:/customer/" + customer.getId();
+        customerService.save(customer);
+        userService.saveOrUpdate(user);
+
+        return "redirect:/shopPage";
     }
 
     @GetMapping (path = "{id}/delete")

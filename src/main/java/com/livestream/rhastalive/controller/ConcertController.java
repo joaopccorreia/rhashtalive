@@ -66,8 +66,7 @@ public class ConcertController {
     public String addShow(@ModelAttribute("show") ShowDto showDto) {
 
         showService.saveOrUpdate(toShows.convert(showDto));
-
-        return "redirect:/";
+        return "redirect:/shopPage";
 
     }
 
