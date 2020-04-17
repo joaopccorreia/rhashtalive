@@ -46,38 +46,29 @@
                     <input th:field="*{phone}" type="text" id="phone" required/>
                 </div>
 
-            <form th:object="${user}" name="signup-form">
-                <div class="form-group">
-                    <label for="userName" class="from-control-label">Username</label>
-                    <input th:field="*{userName}" type="text" id="userName" required/>
-                </div>
+                <form th:object="${user}" name="signup-form">
+                    <div class="form-group">
+                        <label for="userName" class="from-control-label">Username</label>
+                        <input th:field="*{userName}" type="text" id="userName" required/>
+                    </div>
 
-                <div class="form-group">
-                    <label for="password" class="from-control-label">Password</label>
-                    <input th:field="*{password}" type="password" id="password" required/>
-                </div>
+                    <div class="form-group">
+                        <label for="password" class="from-control-label">Password</label>
+                        <input th:field="*{password}" type="password" id="password" required/>
+                    </div>
 
-                <div class="form-group">
-                    <label for="confirmPassword" class="from-control-label">Confirm password</label>
-                    <input type="password" id="confirmPassword" required/>
-                </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="from-control-label">Confirm password</label>
+                        <input type="password" id="confirmPassword" required/>
+                    </div>
 
-            </form>
-
-
-                <button type="submit">Sign Up</button>
-                <p class="message">Already Registered? <a th:href="@{/login}">Login</a></p>
+                    <button type="submit">Sign Up</button>
+                    <p class="message">Already Registered? <a th:href="@{/login}">Login</a></p>
+                </form>
             </form>
         </div>
     </div>
 </div>
-
-<script th:src="@{/script/signup.js}"></script>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<button>Sign Up</button>
-<p class="message">Already Registered? <a href="login.html">Login</a></p>
 
 </body>
 </html>
