@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -17,7 +17,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/styles/concertDetails.css"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/global.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/global.css}"/>
 
 </head>
 <body>
@@ -28,7 +28,7 @@
         <div class="card-header">
             <ul class="nav nav-pills card-header-pills">
                 <li class="nav-item">
-                    <a class="nav-link active" th:href="/templates/">Active</a>
+                    <a class="nav-link active">Active</a>
                 </li>
             </ul>
         </div>
@@ -36,27 +36,26 @@
 </header>
 
 <div>
-    <img src="https://i.ytimg.com/vi/IkVG-qXRgfo/maxresdefault.jpg" class="card-img" alt="...">
+    <img th:src="${shows.thumbnail}" class="card-img" alt="...">
 </div>
 
 <div class="row">
     <div class="col-sm-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Description</h5>
-                <p class="card-description">${artist/description}</p>
+                <h5 th:tex="${shows.name}" class="card-title">Description</h5>
+                <p th:text="${shows.description}" class="card-description"></p>
             </div>
         </div>
     </div>
     <div class="col-sm-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 th:text=${shows.name} class="card-title" ></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Date</li>
-                    <li class="list-group-item">Hour</li>
-                    <li class="list-group-item">Duration</li>
+                    <li th:text="${shows.date}" class="list-group-item">Date: </li>
+                    <li th:text="${shows.durationTime}"  class="list-group-item">Duration: </li>
+                    <li th:text="${shows.capacityLimit}" class="list-group-item">Capacity: </li>
                 </ul>
                 <br>
                 <a href="#" class="btn btn-secondary">Buy now</a>

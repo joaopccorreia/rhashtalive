@@ -2,7 +2,7 @@ window.onload = function () {
 
     var request = new XMLHttpRequest();
 
-    request.open('GET', 'http://', true);
+    request.open('GET', 'http://localhost:8080/concert', true);
 
     request.onload = function () {
         if(request.status === 200){
@@ -47,10 +47,13 @@ window.onload = function () {
         var date = Object.keys(customerData).map(function (durationTime) {
             return customerData[durationTime];
 
-        })
+        });
 
         durationElement.append(date);
     }
+
+    request.setRequestHeader('Content-type', 'application/json');
+    request.send();
 
 
 };

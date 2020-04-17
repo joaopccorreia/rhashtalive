@@ -16,17 +16,12 @@ public class MainController {
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login";
+    public ModelAndView login() {
+        return new ModelAndView("login");
     }
 
     @GetMapping("/signup")
-    public String signup() {
-        return "signup";
-    }
-
-    @PostMapping("/login")
-    public String loginArtist(){
-        return "redirect:/concert/artist/1/add";
+    public ModelAndView signup() {
+        return new ModelAndView("signup");
     }
 }

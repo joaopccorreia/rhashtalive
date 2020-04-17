@@ -20,6 +20,7 @@ public class Show extends GenericModel {
     private Integer capacityLimit;
     private String description;
     private boolean highlight;
+    private String thumbnail;
 
     @OneToOne
     private Product product;
