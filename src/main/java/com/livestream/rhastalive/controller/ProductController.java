@@ -20,23 +20,39 @@ public class ProductController {
     private ShowService showService;
 
     @Autowired
+    public void setProductDtoToProduct(ProductDtoToProduct productDtoToProduct) {
+        this.productDtoToProduct = productDtoToProduct;
+    }
+
+    @Autowired
+    public void setShowToShowsDto(ShowToShowsDto showToShowsDto) {
+        this.showToShowsDto = showToShowsDto;
+    }
+
+    @Autowired
+    public void setShowService(ShowService showService) {
+        this.showService = showService;
+    }
+
+    @Autowired
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
 
     @PostMapping("/{id/add")
-    public String addProduct(@PathVariable Integer id, @ModelAttribute("product") ProductDto productDto){
+    public String addProduct(@PathVariable Integer id, ProductDto productDto){
 
         productService.add(productDtoToProduct.convert(productDto));
 
-        return "redirect:/";
+        return "redirect:/shopPage";
     }
 
     @GetMapping("/shop")
     public String listAllShows(Model model){
 
-        model.addAttribute("shows", showToShowsDto.convert(showService.findAllShows()));
-        return "/static/templates/shopPage";
+        System.out.println(model.addAttribute("shows", showToShowsDto.convert(showService.findAllShows())));
+
+        return "shopPage";
     }
 
 

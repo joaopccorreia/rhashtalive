@@ -73,7 +73,9 @@ CREATE TABLE shows(
     durationTime integer not null,
     capacityLimit integer not null,
     description varchar(256) not null,
-    highlight BIT not null default 0
+    highlight BIT not null default 0,
+    thumbnail varchar(256),
+    link varchar(256)
 );
 
 create table product (

@@ -1,8 +1,35 @@
+.background {
+    background-image: url("/images/addConcert-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: blur(5px);
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
 .form {
-    width: 20%;
+    width: 640px;
     margin: 10% auto;
 }
 
 label {
     font-weight: bold;
+    color: #fff;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login {
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+
 }

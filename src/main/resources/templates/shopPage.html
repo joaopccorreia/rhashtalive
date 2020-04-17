@@ -16,8 +16,9 @@ Coded by www.creative-tim.com
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/global.css}">
+    <title>Shop Page</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/shopPage.css}"/>
 
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -69,7 +70,7 @@ Coded by www.creative-tim.com
                         <span style="padding-left: 20px">My Details</span>
                     </a>
                 </li>
-                <li  class="active ">
+                <li class="active ">
                     <a th:href="${'/customer/' + customer.getId() + '/shop/'}">
                         <img style="max-height: 25px" th:src="@{/images/icon/shop.png}">
                         <span style="padding-left: 20px">Show Aholics</span>
@@ -115,124 +116,67 @@ Coded by www.creative-tim.com
         </nav>
         <!-- End Navbar -->
         <div class="content">
-            <div class="card-deck">
-                <div th:object="${shows}" class="card">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fen.metal-tracker.com%2Ftorrents%2Fimages%2F1515410.jpg&f=1&nofb=1"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 th:text="${show.name}" class="card-title"></h5>
-                        <p th:text="${show.description}" class="card-text"></p>
-                        <button type="button" class="btn btn-secondary">Buy</button>
-                        <button th:href="@{'/concert/' + ${show.id} + '/details'}" type="button" class="btn btn-secondary">View
-                            Details
-                        </button>
-                    </div>
-                </div>
-                <div th:if="${not #lists.isEmpty(show)}" class="card">
-                    <img src="https://i.ebayimg.com/images/i/173595953512-0-1/s-l1000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 th:text="${show.name}" class="card-title"></h5>
-                        <p th:text="${show.description}" class="card-text">This card has supporting text below as a natural
-                            lead-in to additional content.</p>
-                        <button type="button" class="btn btn-secondary">Buy</button>
-                        <button th:href="@{'/concert/' + ${show.id} + '/details'}" type="button" class="btn btn-secondary">View Details</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://4.bp.blogspot.com/-1t8xbeOjfCs/T6eaGEeyf1I/AAAAAAAAA_A/fAdG9dEvc_s/s1600/queen-union-jack-t-shirt-hr.jpg"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Queen</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                            content. This card has even longer content than the first to show that equal height action.</p>
-                        <button type="button" class="btn btn-secondary">Buy</button>
-                        <button type="button" class="btn btn-secondary">View Details</button>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="card-deck">
-                <div class="card">
-                    <img src="https://www.branditmusic.com/wp-content/uploads/2020/01/chico-da-tina-minho-trapstar-1024x1024.jpg"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Chico da Tina</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                            content. This content is a little bit longer.</p>
-                        <button type="button" class="btn btn-secondary">Buy</button>
-                        <button type="button" class="btn btn-secondary">View Details</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://2.bp.blogspot.com/-mX7sVJM8mS0/UkcQfjEVN0I/AAAAAAAAAAs/oE8tbmS4IcM/s1600/kimd.png"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Quim barreiros</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <button type="button" class="btn btn-secondary">Buy</button>
-                        <button type="button" class="btn btn-secondary">View Details</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="http://static.gigwise.com/artists/Beyonce2014TourPost600.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Beyonce</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                            content. This card has even longer content than the first to show that equal height action.</p>
-                        <button type="button" class="btn btn-secondary">Buy</button>
-                        <button type="button" class="btn btn-secondary">View Details</button>
+            <div th:each="show : ${shows}" class="container">
+                <div class="card-deck">
+                    <div class="card">
+                        <img th:src="${show.thumbnail}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 th:text="${show.name}" class="card-title"></h5>
+                            <p th:text="${show.description}" class="card-text"></p>
+                            <button type="button" class="btn btn-secondary">Buy</button>
+                            <button th:href="@{'/details/' + ${show.id}}" type="button" class="btn btn-secondary">View
+                                Details
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<footer class="footer footer-black  footer-white ">
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="footer-nav">
-                <ul>
-                    <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                    <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                    <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-                </ul>
-            </nav>
-            <div class="credits ml-auto">
+    <footer class="footer footer-black  footer-white ">
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
+                        <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
+                        <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+                    </ul>
+                </nav>
+                <div class="credits ml-auto">
               <span class="copyright">
                 © <script>
                   document.write(new Date().getFullYear())
                 </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
               </span>
+
+
+                </div>
             </div>
+            <!--   Core JS Files   -->
+            <script src="../assets/js/core/jquery.min.js"></script>
+            <script src="../assets/js/core/popper.min.js"></script>
+            <script src="../assets/js/core/bootstrap.min.js"></script>
+            <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+            <!--  Google Maps Plugin    -->
+            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+            <!-- Chart JS -->
+            <script src="../assets/js/plugins/chartjs.min.js"></script>
+            <!--  Notifications Plugin    -->
+            <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+            <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+            <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+            <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+            <script src="../assets/demo/demo.js"></script>
+            <script>
+                $(document).ready(function () {
+                    // Javascript method's body can be found in assets/assets-for-demo/js/userdashboard.js
+                    demo.initChartsPages();
+                });
+            </script>
         </div>
-    </div>
-</footer>
+    </footer>
 </div>
-</div>
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap.min.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chart JS -->
-<script src="../assets/js/plugins/chartjs.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/demo/demo.js"></script>
-<script>
-    $(document).ready(function () {
-        // Javascript method's body can be found in assets/assets-for-demo/js/userdashboard.js
-        demo.initChartsPages();
-    });
-</script>
 </body>
 </html>
