@@ -6,7 +6,7 @@ import com.livestream.rhastalive.model.GenericModel;
 import com.livestream.rhastalive.model.Product;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -21,6 +21,6 @@ public class MainController {
 
     @GetMapping("/signup")
     public ModelAndView signup() {
-        return null;
+        return new ModelAndView("signup");
     }
 }

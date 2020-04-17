@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <thymeleaf th:replace="header :: header"/>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Login</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" href="../static/styles/global.css" /> -->
-    <link rel="stylesheet" href="../static/styles/login.css" />
+    <link rel="stylesheet" th:href="@{/styles/login.css}" />
 </head>
 
 <body>
     <div class="login-page">
-
-        <div th:replace="action :: action"></div>
 
         <div class="image-box">
             <div class="thumbnail">
