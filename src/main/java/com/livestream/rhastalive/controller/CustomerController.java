@@ -1,6 +1,7 @@
 package com.livestream.rhastalive.controller;
 
 import com.livestream.rhastalive.DTO.CustomerDto;
+import com.livestream.rhastalive.DTO.ShowDto;
 import com.livestream.rhastalive.DTO.UserDto;
 import com.livestream.rhastalive.DTO.converters.CustomerDtoToCustomer;
 import com.livestream.rhastalive.DTO.converters.CustomerToCustomerDto;
@@ -11,6 +12,7 @@ import com.livestream.rhastalive.service.CustomerService;
 import com.livestream.rhastalive.service.SecureUserServiceImpl;
 import com.livestream.rhastalive.service.UserService;
 import com.livestream.rhastalive.service.UserServiceImpl;
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,12 +59,23 @@ public class CustomerController {
     }
 
     @GetMapping({"/", ""})
-    public ModelAndView getDashboard(){
+    public String getDashboard(Model model){
 
         //int id = userService.findByUserName(userDto.getUserName()).getCustomer().getId();
 
         CustomerDto customerDto = customerToCustomerDto.convert(customerService.get(1));
-        return new ModelAndView("userdashboard", "products", customerDto.getListOfBoughtProducts());
+        model.addAttribute("products", customerDto.getListOfBoughtProducts());
+        model.addAttribute("customer", customerDto);
+        return "userdashboard";
+    }
+
+    @GetMapping("{id}")
+    public String userDashboard(@PathVariable("id") Integer id, Model model){
+
+        CustomerDto customerDto = customerToCustomerDto.convert(customerService.get(id));
+        model.addAttribute("products", customerDto.getListOfBoughtProducts());
+        model.addAttribute("customer", customerDto);
+        return "userdashboard";
     }
 
 
@@ -72,23 +85,25 @@ public class CustomerController {
         return "shopPage";
     }
 
-    @GetMapping("/{id}/edit")
-    public String editCustomer(@PathVariable Integer id, Model model) {
+    @GetMapping("/{id}/edit/")
+    public String editCustomer(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("customer", customerToCustomerDto.convert(customerService.get(id)));
+        return "edituser";
+    }
+
+    @GetMapping("/{id}/shop/")
+    public String goToShop(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("customer", customerToCustomerDto.convert(customerService.get(id)));
         return "shopPage";
     }
 
-    @PostMapping(path = {"/", ""}, params = "action=save")
-    public String saveCustomer(@Valid @ModelAttribute("customer") CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
-            return "redirect:/home";
-        }
+    @PostMapping("/{id}/edit/")
+    public String editCustomer(@ModelAttribute("customer") CustomerDto customerDto) {
 
-        Customer savedCustomer = customerService.save(customerDtoToCustomer.convert(customerDto));
+        Customer customer = customerDtoToCustomer.convert(customerDto);
+        customerService.save(customer);
 
-        redirectAttributes.addFlashAttribute("lastAction", "Saved" + savedCustomer.getFirstName() + " "
-                + savedCustomer.getLastName());
-        return "shopPage";
+        return "redirect:/customer/" + customer.getId();
     }
 
     @GetMapping (path = "{id}/delete")

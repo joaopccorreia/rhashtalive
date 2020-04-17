@@ -24,7 +24,7 @@ CREATE TABLE customer(
     lastName VARCHAR(256) not null,
     vatNumber varchar(256) not null unique,
     email varchar(256) not null,
-    phone integer unique not null
+    phone integer not null
 );
 
 CREATE TABLE user (
