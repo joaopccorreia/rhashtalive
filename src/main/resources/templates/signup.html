@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Login</title>
+    <title>Sign Up</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" href="../static/styles/global.css" /> -->
-    <link rel="stylesheet" href="../static/styles/signup.css" />
+    <link rel="stylesheet" th:href="@{/styles/signup.css}" />
 </head>
 
 <body>
@@ -26,8 +26,6 @@
         </div>
 
         <div class="data-box">
-            <script src="../static/script/signup.js"></script>
-
             <div class="form">
                 <form name="signup-form">
                     <div class="form-group">
@@ -71,10 +69,12 @@
                     </div>
 
                     <button>Sign Up</button>
-                    <p class="message">Already Registered? <a href="login.html">Login</a> </p>
+                    <p class="message">Already Registered? <a href="/login">Login</a> </p>
                 </form>
             </div>
         </div>
     </div>
+
+    <script th:src="@{/script/signup.js}"></script>
 </body>
 </html>

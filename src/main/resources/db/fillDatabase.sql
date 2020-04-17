@@ -5,27 +5,24 @@ INSERT INTO customer(id, creationTime, updateTime, version, firstName, lastName,
   (2, TIMESTAMP '2017-10-10 08:45:56.481', TIMESTAMP '2017-10-10 08:45:56.481', 0, 'Sergio', 'Gouveia',12321,'sergiogouveia@gmail.com', 7788),
   (3, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'Bruno', 'Ferreira', 23432,'brunoferreira@gmail.com', 12412),
   (4, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'No name', 'No last name', 23242354, 'noname@gmail.com', 64567547);
-<<<<<<< HEAD
+
   
 INSERT INTO artist(id, creationTime, updateTime, version, firstName, lastName, artisticName ,vatNumber, email, phone) VALUES
   (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Joaquim', 'Almeida', "Jo Jo", 2223423 , 'jojo@gmail.com', 9124);
-  
-=======
 
-INSERT INTO artist(id, creationTime, updateTime, version, firstName, lastName, artisticName ,vatNumber, email, phone) VALUES
-  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Joaquim', 'Almeida', "Jo Jo", 2223423 , 'jojo@gmail.com', 9124);
 
->>>>>>> 94d61fe7604015c04d9a098411cb4cba883b6209
 INSERT INTO user(userName, password, active, customer_id, artist_id) VALUES
   ('rui', 'pass', 1 , 1, 1),
   ('sergio', 'pass',1, 2, 1 ),
   ('bruno', 'pass', 1, 3, 1),
   ('noname', 'pass', 1, 4, 1);
 
+
 INSERT INTO role(id, creationTime, updateTime, version, name) VALUES
   (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'USER'),
   (2, TIMESTAMP '2017-10-10 08:45:56.481', TIMESTAMP '2017-10-10 08:45:56.481', 0, 'ADMIN'),
   (3, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'ARTIST');
+
 
 INSERT INTO user_role(user_id, role_id) VALUES
   ('rui', 1),
@@ -34,6 +31,7 @@ INSERT INTO user_role(user_id, role_id) VALUES
   ('bruno', 2),
   ('noname', 1),
   ('noname', 3);
+
 
 DELETE FROM shows;
 INSERT INTO shows(ID, CREATIONTIME, UPDATETIME, VERSION, NAME, DATE , DURATIONTIME, capacityLimit, description, highlight) VALUES

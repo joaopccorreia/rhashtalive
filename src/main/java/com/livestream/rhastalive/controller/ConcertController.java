@@ -67,7 +67,7 @@ public class ConcertController {
 
         showService.saveOrUpdate(toShows.convert(showDto));
 
-        return "shopPage";
+        return "redirect:/";
 
     }
 

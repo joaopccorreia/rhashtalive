@@ -2,6 +2,7 @@ package com.livestream.rhastalive.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,12 +16,17 @@ public class MainController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login() {
-        return new ModelAndView("index");
+    public String login() {
+        return "login";
     }
 
     @GetMapping("/signup")
-    public ModelAndView signup() {
-        return null;
+    public String signup() {
+        return "signup";
+    }
+
+    @PostMapping("/login")
+    public String loginArtist(){
+        return "redirect:/concert/artist/1/add";
     }
 }
