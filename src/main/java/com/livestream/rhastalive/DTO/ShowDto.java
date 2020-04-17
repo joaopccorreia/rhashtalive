@@ -31,4 +31,6 @@ public class ShowDto {
 
     private String thumbnail;
 
+    private String showLink;
+
 }

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping("/concert")
+@RequestMapping("/artist")
 public class ConcertController {
 
 
@@ -52,7 +52,7 @@ public class ConcertController {
         return new ModelAndView("concertDetails");
     }
 
-    @GetMapping("/artist/{id}/add")
+    @GetMapping("/{id}/add")
     public String addShowPage(@PathVariable Integer id, Model model) {
 
         model.addAttribute("show", new ShowDto());
@@ -62,7 +62,7 @@ public class ConcertController {
 
     }
 
-    @PostMapping("/artist/{id}/add")
+    @PostMapping("/{id}/add")
     public String addShow(@ModelAttribute("show") ShowDto showDto) {
 
         showService.saveOrUpdate(toShows.convert(showDto));

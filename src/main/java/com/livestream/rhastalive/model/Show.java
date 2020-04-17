@@ -19,6 +19,7 @@ public class Show extends GenericModel {
     private String description;
     private boolean highlight;
     private String thumbnail;
+    private String showLink;
 
     @OneToOne(
             cascade = CascadeType.ALL,
