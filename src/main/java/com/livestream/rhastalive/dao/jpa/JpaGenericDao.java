@@ -66,4 +66,5 @@ public abstract class JpaGenericDao<T extends Model> implements Dao<T> {
 
         em.remove(em.find(modelType, id));
     }
+
 }

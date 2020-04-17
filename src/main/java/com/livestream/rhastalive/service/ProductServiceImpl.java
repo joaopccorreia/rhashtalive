@@ -2,6 +2,7 @@ package com.livestream.rhastalive.service;
 
 import com.livestream.rhastalive.dao.ProductDao;
 import com.livestream.rhastalive.model.Product;
+import com.livestream.rhastalive.model.Show;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,4 +63,12 @@ public class ProductServiceImpl implements ProductService {
     public Product edit(Product product) {
         return productDao.saveOrUpdate(product);
     }
+
+
+    @Override
+    @Transactional
+    public Product getByShow(Show show){
+        return productDao.finByShow(show);
+    }
+
 }

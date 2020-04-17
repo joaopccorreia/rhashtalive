@@ -47,7 +47,7 @@ public class Customer extends GenericModel {
     )
     private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "customer_product",
             joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "id"),

@@ -1,6 +1,7 @@
 package com.livestream.rhastalive.service;
 
 import com.livestream.rhastalive.model.Product;
+import com.livestream.rhastalive.model.Show;
 
 import java.util.List;
 
@@ -56,5 +57,7 @@ public interface ProductService {
      * @return if successfully edited
      */
     Product edit(Product product);
+
+    public Product getByShow(Show show);
 
 }
