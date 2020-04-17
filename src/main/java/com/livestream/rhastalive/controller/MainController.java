@@ -1,6 +1,8 @@
 package com.livestream.rhastalive.controller;
 
+import com.livestream.rhastalive.DTO.CustomerDto;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,9 @@ public class MainController {
     }
 
     @GetMapping("/signup")
-    public ModelAndView signup() {
+    public ModelAndView signup(Model model) {
+
+        model.addAttribute("customer", new CustomerDto());
         return new ModelAndView("signup");
     }
 
