@@ -27,4 +27,9 @@ public class ShowDto {
     @NotNull
     private Integer capacityLimit;
 
+    @NotNull
+    private String description;
+
+    private String thumbnail;
+
 }

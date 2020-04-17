@@ -16,11 +16,11 @@ public class MainController {
 
     @GetMapping("/login")
     public ModelAndView login() {
-        return new ModelAndView("index");
+        return new ModelAndView("login");
     }
 
     @GetMapping("/signup")
     public ModelAndView signup() {
-        return null;
+        return new ModelAndView("signup");
     }
 }

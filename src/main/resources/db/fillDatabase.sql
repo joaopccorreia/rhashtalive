@@ -29,8 +29,8 @@ INSERT INTO user_role(user_id, role_id) VALUES
   ('noname', 3);
 
 DELETE FROM shows;
-INSERT INTO shows(ID, CREATIONTIME, UPDATETIME, VERSION, NAME, DATE , DURATIONTIME, capacityLimit, description, highlight) VALUES
-  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'batata', '2020-04-16', '01:00:00', 20, 'nice show to whats whit all my friends', 0),
-  (2, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'dragao', '2020-04-15', '01:00:00', 15,'please more nooooo', 0),
-  (3, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'uvas a dançar', '2020-04-17', '01:00:00', 100, 'to see alone', 1),
-  (4, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'ricardo rap', '2020-04-16', '01:00:00', 300, 'all by my selfe', 1);
+INSERT INTO shows(ID, CREATIONTIME, UPDATETIME, VERSION, NAME, DATE , DURATIONTIME, capacityLimit, description, highlight, thumbnail) VALUES
+  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'batata', '2020-04-16', '01:00:00', 20, 'nice show to whats whit all my friends', 0, 'http://static.gigwise.com/artists/Beyonce2014TourPost600.jpg'),
+  (2, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'dragao', '2020-04-15', '01:00:00', 15,'please more nooooo', 0,'https://2.bp.blogspot.com/-mX7sVJM8mS0/UkcQfjEVN0I/AAAAAAAAAAs/oE8tbmS4IcM/s1600/kimd.png'),
+  (3, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'uvas a dançar', '2020-04-17', '01:00:00', 100, 'to see alone', 1, 'https://www.branditmusic.com/wp-content/uploads/2020/01/chico-da-tina-minho-trapstar-1024x1024.jpg'),
+  (4, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'ricardo rap', '2020-04-16', '01:00:00', 300, 'all by my selfe', 1, 'https://4.bp.blogspot.com/-1t8xbeOjfCs/T6eaGEeyf1I/AAAAAAAAA_A/fAdG9dEvc_s/s1600/queen-union-jack-t-shirt-hr.jpg');

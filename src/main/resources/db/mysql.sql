@@ -84,7 +84,8 @@ CREATE TABLE shows(
     durationTime time not null,
     capacityLimit integer not null,
     description varchar(256) not null,
-    highlight BIT not null default 0
+    highlight BIT not null default 0,
+    thumbnail varchar(256)
     );
 
 CREATE TABLE user_role (

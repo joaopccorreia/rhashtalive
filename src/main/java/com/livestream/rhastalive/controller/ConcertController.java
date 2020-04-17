@@ -42,9 +42,9 @@ public class ConcertController {
         this.toShows = toShows;
     }
 
-    @GetMapping(path = {"/", ""})
-    public ModelAndView showShopPage(){
-        return new ModelAndView("shopPage");
+    @GetMapping("/")
+    public String showShopPage(){
+        return "shopPage";
     }
 
     @GetMapping("/details")
@@ -67,7 +67,7 @@ public class ConcertController {
 
         showService.saveOrUpdate(toShows.convert(showDto));
 
-        return "shopPage";
+        return "redirect:/shopPage";
 
     }
 
