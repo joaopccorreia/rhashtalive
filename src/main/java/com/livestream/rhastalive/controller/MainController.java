@@ -24,4 +24,9 @@ public class MainController {
     public ModelAndView signup() {
         return new ModelAndView("signup");
     }
+
+    @PostMapping("/login")
+    public String loginArtist(){
+        return "redirect:/customer";
+    }
 }

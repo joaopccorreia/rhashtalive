@@ -40,3 +40,18 @@ INSERT INTO shows(ID, CREATIONTIME, UPDATETIME, VERSION, NAME, DATE , DURATIONTI
   (2, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'dragao', '2020-04-15', '01:00:00', 15,'please more nooooo', 0,'https://2.bp.blogspot.com/-mX7sVJM8mS0/UkcQfjEVN0I/AAAAAAAAAAs/oE8tbmS4IcM/s1600/kimd.png'),
   (3, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'uvas a dançar', '2020-04-17', '01:00:00', 100, 'to see alone', 1, 'https://www.branditmusic.com/wp-content/uploads/2020/01/chico-da-tina-minho-trapstar-1024x1024.jpg'),
   (4, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'ricardo rap', '2020-04-16', '01:00:00', 300, 'all by my selfe', 1, 'https://4.bp.blogspot.com/-1t8xbeOjfCs/T6eaGEeyf1I/AAAAAAAAA_A/fAdG9dEvc_s/s1600/queen-union-jack-t-shirt-hr.jpg');
+
+DELETE FROM product
+INSERT INTO product(id, creationTime, updateTime, version, name, availableQuantity, availableDate, productType, isActive, show_id) VALUES
+  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Metalica', 500, '2020-04-18', 'TICKET', 1, 1),
+  (2, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'U2', 1000, '2020-04-17', 'TICKET', 1, 2),
+  (3, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Pink Floyd', 2000, '2020-04-25', 'TICKET', 1, 3),
+  (4, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Led Zeplin', 100, '2020-05-16', 'TICKET', 1, 4);
+
+
+DELETE from customer_product
+INSERT INTO customer_product(customer_id, product_id) VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4);

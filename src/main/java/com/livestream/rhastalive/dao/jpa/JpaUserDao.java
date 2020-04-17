@@ -33,4 +33,14 @@ public class JpaUserDao implements UserDao {
         //return (User) em.createQuery("select '*' from " + modelType.getSimpleName() + " where 'userName' = '" + username + "'").getSingleResult();
         return em.find(User.class, username);
     }
+
+    @Override
+    public User saveOrUpdate(User user) {
+        return em.merge(user);
+    }
+
+    @Override
+    public void delete(String userName) {
+        em.remove(findByUserName(userName));
+    }
 }

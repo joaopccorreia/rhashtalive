@@ -3,9 +3,7 @@ package com.livestream.rhastalive.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Getter
@@ -22,6 +20,10 @@ public class Show extends GenericModel {
     private boolean highlight;
     private String thumbnail;
 
-    @OneToOne
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            mappedBy = "show",
+            fetch = FetchType.LAZY
+    )
     private Product product;
 }

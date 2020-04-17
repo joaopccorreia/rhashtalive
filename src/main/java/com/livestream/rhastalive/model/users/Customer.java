@@ -53,7 +53,7 @@ public class Customer extends GenericModel {
             joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
     )
-    private List<Product> productsList;
+    private List<Product> listOfBoughtProducts;
 
 
     @Override
