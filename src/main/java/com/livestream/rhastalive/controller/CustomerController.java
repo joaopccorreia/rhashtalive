@@ -5,9 +5,12 @@ import com.livestream.rhastalive.DTO.ShowDto;
 import com.livestream.rhastalive.DTO.UserDto;
 import com.livestream.rhastalive.DTO.converters.CustomerDtoToCustomer;
 import com.livestream.rhastalive.DTO.converters.CustomerToCustomerDto;
+import com.livestream.rhastalive.DTO.converters.UserDtoToUser;
+import com.livestream.rhastalive.DTO.converters.UserToUserDto;
 import com.livestream.rhastalive.exception.AssociationExistsException;
 import com.livestream.rhastalive.exception.CustomerNotFoundException;
 import com.livestream.rhastalive.model.users.Customer;
+import com.livestream.rhastalive.model.users.User;
 import com.livestream.rhastalive.service.CustomerService;
 import com.livestream.rhastalive.service.SecureUserServiceImpl;
 import com.livestream.rhastalive.service.UserService;
@@ -29,6 +32,8 @@ public class CustomerController {
 
     private CustomerService customerService;
     private UserService userService;
+    private UserDtoToUser userDtoToUser;
+    private UserToUserDto userToUserDto;
 
     private CustomerToCustomerDto customerToCustomerDto;
     private CustomerDtoToCustomer customerDtoToCustomer;
@@ -82,6 +87,7 @@ public class CustomerController {
     @GetMapping("/add")
     public String addCustomer(Model model) {
         model.addAttribute("customer", new CustomerDto());
+        model.addAttribute("user", new UserDto());
         return "signup";
     }
 
@@ -98,10 +104,13 @@ public class CustomerController {
     }
 
     @PostMapping("/{id}/edit/")
-    public String editCustomer(@ModelAttribute("customer") CustomerDto customerDto) {
+    public String editCustomer(@ModelAttribute("customer") CustomerDto customerDto, @ModelAttribute("user") UserDto userDto) {
 
         Customer customer = customerDtoToCustomer.convert(customerDto);
+        User user = userDtoToUser.convert(userDto);
+
         customerService.save(customer);
+        userService.saveOrUpdate(user);
 
         return "redirect:/shopPage";
     }
