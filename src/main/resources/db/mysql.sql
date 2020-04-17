@@ -81,7 +81,7 @@ CREATE TABLE shows(
     version integer,
     name varchar(256) not null,
     date date not null,
-    durationTime time not null,
+    durationTime integer not null,
     capacityLimit integer not null,
     description varchar(256) not null,
     highlight BIT not null default 0
