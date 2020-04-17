@@ -33,9 +33,21 @@ INSERT INTO user_role(user_id, role_id) VALUES
   ('noname', 3);
 
 
-DELETE FROM shows;
 INSERT INTO shows(ID, CREATIONTIME, UPDATETIME, VERSION, NAME, DATE , DURATIONTIME, capacityLimit, description, highlight) VALUES
-  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'batata', '2020-04-16', '01:00:00', 20, 'nice show to whats whit all my friends', 0),
-  (2, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'dragao', '2020-04-15', '01:00:00', 15,'please more nooooo', 0),
-  (3, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'uvas a dançar', '2020-04-17', '01:00:00', 100, 'to see alone', 1),
-  (4, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'ricardo rap', '2020-04-16', '01:00:00', 300, 'all by my selfe', 1);
+  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'batata', '2020-04-16', 1, 20, 'nice show to whats whit all my friends', 0),
+  (2, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'dragao', '2020-04-15', 1, 15,'please more nooooo', 0),
+  (3, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'uvas a dançar', '2020-04-17', 1, 100, 'to see alone', 1),
+  (4, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'ricardo rap', '2020-04-16', 1, 300, 'all by my selfe', 1);
+
+INSERT INTO product(id, creationTime, updateTime, version, name, availableQuantity, availableDate, productType, isActive, show_id) VALUES
+  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Metalica', 500, '2020-04-18', 'TICKET', 1, 1),
+  (2, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'U2', 1000, '2020-04-17', 'TICKET', 1, 2),
+  (3, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Pink Floyd', 2000, '2020-04-25', 'TICKET', 1, 3),
+  (4, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Led Zeplin', 100, '2020-05-16', 'TICKET', 1, 4);
+
+
+INSERT INTO customer_product(customer_id, product_id) VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4);

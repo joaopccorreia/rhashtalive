@@ -116,7 +116,7 @@ Coded by www.creative-tim.com
         <!-- End Navbar -->
         <div class="content">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-6" th:each="show : ${products}">
                     <div class="card card-stats">
                         <div class="card-body" style="height: 500px;">
                             <div style="height: 250px;">
@@ -124,10 +124,8 @@ Coded by www.creative-tim.com
                                      class="card-img-top" alt="...">
                             </div>
                             <div style="height: 150px;">
-                                <h5 class="card-title">Metallica</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in
-                                    to additional content. This content is a little bit longer.</p>
+                                <h5 class="card-title"><span th:text="${show.getShow().getName()}"/></h5>
+                                <p class="card-text"><span th:text="${show.getShow().getDescription()}"/></p>
                             </div>
                                 <a href="./showPage.html" class="btn btn-secondary">Watch Show</a>
                         </div>

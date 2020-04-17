@@ -62,17 +62,6 @@ CREATE TABLE address(
     foreign key (artist_id) references artist(id) ON UPDATE CASCADE
     );
 
-    create table product (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    creationTime timestamp,
-    updateTime timestamp,
-    version integer,
-    name varchar(256) not null,
-    availableQuantity integer not null,
-    availableDate time not null,
-    productType varchar(256) not null,
-    isActive BIT not null default 1
-    );
 
 CREATE TABLE shows(
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -85,7 +74,22 @@ CREATE TABLE shows(
     capacityLimit integer not null,
     description varchar(256) not null,
     highlight BIT not null default 0
-    );
+);
+
+create table product (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    creationTime timestamp,
+    updateTime timestamp,
+    version integer,
+    name varchar(256) not null,
+    availableQuantity integer not null,
+    availableDate date not null,
+    productType varchar(256) not null,
+    isActive BIT not null default 1,
+    show_id integer,
+
+    FOREIGN key (show_id) references shows(id)
+);
 
 CREATE TABLE user_role (
 	user_id varchar(256),
