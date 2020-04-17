@@ -57,20 +57,20 @@ Coded by www.creative-tim.com
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active ">
-                    <a href="./rhastashows.html">
+                <li  class="active ">
+                    <a th:href="${'/customer/' + customer.getId()}">
                         <img style="max-height: 25px" th:src="@{/images/icon/home.png}">
                         <span style="padding-left: 20px">rHASTAshows</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./userdetails.html">
+                    <a th:href="${'/customer/' + customer.getId() + '/edit/'}">
                         <img style="max-height: 25px" th:src="@{/images/icon/user.png}">
                         <span style="padding-left: 20px">My Details</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./shopPage.html">
+                    <a th:href="${'/customer/' + customer.getId() + '/shop/'}">
                         <img style="max-height: 25px" th:src="@{/images/icon/shop.png}">
                         <span style="padding-left: 20px">Show Aholics</span>
                     </a>

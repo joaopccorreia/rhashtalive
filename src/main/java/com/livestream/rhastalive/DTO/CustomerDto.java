@@ -3,9 +3,13 @@ package com.livestream.rhastalive.DTO;
 import com.livestream.rhastalive.model.Product;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Getter @Setter

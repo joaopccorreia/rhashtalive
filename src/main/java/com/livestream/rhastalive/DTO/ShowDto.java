@@ -30,7 +30,7 @@ public class ShowDto {
     private String description;
 
     private String thumbnail;
-    
+
     private String showLink;
 
 
