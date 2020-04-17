@@ -29,9 +29,6 @@ public class ShowDto {
     @NotNull
     private String description;
 
-<<<<<<< HEAD
     private String thumbnail;
 
-=======
->>>>>>> 267812ae176e3f55c694fc3bde3efcd111bdead4
 }
