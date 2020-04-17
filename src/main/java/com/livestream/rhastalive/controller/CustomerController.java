@@ -2,61 +2,42 @@ package com.livestream.rhastalive.controller;
 
 import com.livestream.rhastalive.DTO.CustomerDto;
 import com.livestream.rhastalive.DTO.ShowDto;
-import com.livestream.rhastalive.DTO.UserDto;
-import com.livestream.rhastalive.DTO.converters.CustomerDtoToCustomer;
-import com.livestream.rhastalive.DTO.converters.CustomerToCustomerDto;
+import com.livestream.rhastalive.DTO.converters.*;
 import com.livestream.rhastalive.exception.AssociationExistsException;
 import com.livestream.rhastalive.exception.CustomerNotFoundException;
+import com.livestream.rhastalive.model.Product;
 import com.livestream.rhastalive.model.users.Customer;
-import com.livestream.rhastalive.service.CustomerService;
-import com.livestream.rhastalive.service.SecureUserServiceImpl;
-import com.livestream.rhastalive.service.UserService;
-import com.livestream.rhastalive.service.UserServiceImpl;
-import org.hibernate.annotations.Parameter;
+import com.livestream.rhastalive.service.*;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
+import java.util.List;
 
+@Setter
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
 
+    @Autowired
     private CustomerService customerService;
+    @Autowired
     private UserService userService;
-
+    @Autowired
+    private ShowService showService;
+    @Autowired
     private CustomerToCustomerDto customerToCustomerDto;
+    @Autowired
     private CustomerDtoToCustomer customerDtoToCustomer;
-
     @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
+    private ShowToShowsDto showToShowsDto;
     @Autowired
-    public void setCustomertoCustomerDto(CustomerToCustomerDto customerToCustomerDto) {
-        this.customerToCustomerDto = customerToCustomerDto;
-    }
-
+    private ShowsDtoToShows showsDtoToShows;
     @Autowired
-    public void setCustomerDtoToCustomer(CustomerDtoToCustomer customerDtoToCustomer) {
-        this.customerDtoToCustomer = customerDtoToCustomer;
-    }
-
-    @Autowired
-    public void setCustomerService(CustomerService customerService) {
-        this.customerService = customerService;
-    }
-
-    @Autowired
-    public void setCustomerToCustomerDto(CustomerToCustomerDto customerToCustomerDto) {
-        this.customerToCustomerDto = customerToCustomerDto;
-    }
+    private ProductService productService;
 
     @GetMapping({"/", ""})
     public String getDashboard(Model model){
@@ -93,8 +74,27 @@ public class CustomerController {
 
     @GetMapping("/{id}/shop/")
     public String goToShop(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("shows", showToShowsDto.convert(showService.findAllShows()));
         model.addAttribute("customer", customerToCustomerDto.convert(customerService.get(id)));
         return "shopPage";
+    }
+
+    @GetMapping("/{cid}/buy/{sid}")
+    public String editCustomer(@PathVariable("cid") Integer customer_id, @ModelAttribute("sid") Integer show_id) {
+
+        ShowDto showDto = showToShowsDto.convert(showService.findById(show_id));
+        CustomerDto customerDto = customerToCustomerDto.convert(customerService.get(customer_id));
+
+        List<Product> productList = customerDto.getListOfBoughtProducts();
+        Product product = productService.getByShow(showsDtoToShows.convert(showDto));
+        productList.add(productList.size(), product);
+
+        customerDto.setListOfBoughtProducts(productList);
+
+        productService.edit(product);
+        customerService.save(customerDtoToCustomer.convert(customerDto));
+
+        return "redirect:/customer/" + customer_id;
     }
 
     @PostMapping("/{id}/edit/")
@@ -114,7 +114,4 @@ public class CustomerController {
         redirectAttributes.addFlashAttribute("lastAction", "Deleted" + customer.getFirstName() + " " + customer.getLastName());
         return "home";
     }
-
-
-
 }

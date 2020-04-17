@@ -49,4 +49,9 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Product> listOfBoughtProducts(Integer id) {
         return jpaCustomerDao.findProductBought(id);
     }
+
+    @Transactional
+    public void buyProduct(Customer customer) {
+        jpaCustomerDao.saveOrUpdate(customer);
+    }
 }
