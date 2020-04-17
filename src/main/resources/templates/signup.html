@@ -1,14 +1,22 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+=======
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 267812ae176e3f55c694fc3bde3efcd111bdead4
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Login</title>
+    <title>Sign Up</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" href="../static/styles/global.css" /> -->
+<<<<<<< HEAD
     <link rel="stylesheet" th:href="@{/styles/signup.css}"/>
+=======
+    <link rel="stylesheet" th:href="@{/styles/signup.css}" />
+>>>>>>> 267812ae176e3f55c694fc3bde3efcd111bdead4
 </head>
 
 <body>
@@ -25,6 +33,7 @@
         <button>Artist</button>
     </div>
 
+<<<<<<< HEAD
     <div class="data-box">
         <script th:src="@{/static/script/signup.js}"></script>
 
@@ -34,6 +43,15 @@
                     <label for="userName" class="from-control-label">Username</label>
                     <input type="text" id="userName" required/>
                 </div>
+=======
+        <div class="data-box">
+            <div class="form">
+                <form name="signup-form">
+                    <div class="form-group">
+                        <label for="userName" class="from-control-label">Username</label>
+                        <input type="text" id="userName" required />
+                    </div>
+>>>>>>> 267812ae176e3f55c694fc3bde3efcd111bdead4
 
                 <div class="form-group">
                     <label for="firstName" class="from-control-label">First name</label>
@@ -70,11 +88,22 @@
                     <input type="text" id="phone" required/>
                 </div>
 
+<<<<<<< HEAD
                 <button>Sign Up</button>
                 <p class="message">Already Registered? <a href="login.html">Login</a></p>
             </form>
         </div>
     </div>
 </div>
+=======
+                    <button>Sign Up</button>
+                    <p class="message">Already Registered? <a href="/login">Login</a> </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/script/signup.js}"></script>
+>>>>>>> 267812ae176e3f55c694fc3bde3efcd111bdead4
 </body>
 </html>

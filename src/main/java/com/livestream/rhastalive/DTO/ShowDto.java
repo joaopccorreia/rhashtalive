@@ -5,8 +5,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
-import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 @Getter @Setter
 @Component
@@ -22,7 +21,7 @@ public class ShowDto {
     private Date date;
 
     @NotNull
-    private Time durationTime;
+    private Integer durationTime;
 
     @NotNull
     private Integer capacityLimit;
@@ -30,6 +29,9 @@ public class ShowDto {
     @NotNull
     private String description;
 
+<<<<<<< HEAD
     private String thumbnail;
 
+=======
+>>>>>>> 267812ae176e3f55c694fc3bde3efcd111bdead4
 }
